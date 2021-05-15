@@ -1,0 +1,90 @@
+bufferSize: 2048
+pages:
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: configs/resources/audio/three_mix.wav
+  showWaveform: true
+  stimuli:
+    C1: configs/resources/audio/three_s1.wav
+    C2: configs/resources/audio/three_s2.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: configs/resources/audio/three_mix.wav
+  showWaveform: true
+  stimuli:
+    C1: configs/resources/audio/three_s1.wav
+    C2: configs/resources/audio/three_s2.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: configs/resources/audio/three_mix.wav
+  showWaveform: true
+  stimuli:
+    C1: configs/resources/audio/three_s1.wav
+    C2: configs/resources/audio/three_s2.wav
+  type: paired_comparison
+  unforced: null
+- content: Thank you for attending
+  name: Thank you
+  showResults: false
+  type: finish
+  writeResults: true
+remoteService: service/write.php
+showButtonPreviousPage: true
+stopOnErrors: true
+testId: ab_noloop
+testname: AB Test
+bufferSize: 2048
+pages:
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: configs/resources/audio/three_mix.wav
+  showWaveform: true
+  stimuli:
+    C1: configs/resources/audio/three_s1.wav
+    C2: configs/resources/audio/three_s2.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: configs/resources/audio/three_mix.wav
+  showWaveform: true
+  stimuli:
+    C1: configs/resources/audio/three_s1.wav
+    C2: configs/resources/audio/three_s2.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: configs/resources/audio/three_mix.wav
+  showWaveform: true
+  stimuli:
+    C1: configs/resources/audio/three_s1.wav
+    C2: configs/resources/audio/three_s2.wav
+  type: paired_comparison
+  unforced: null
+- content: Thank you for attending
+  name: Thank you
+  showResults: false
+  type: finish
+  writeResults: true
+remoteService: service/write.php
+showButtonPreviousPage: true
+stopOnErrors: true
+testId: ab_noloop
+testname: AB Test
