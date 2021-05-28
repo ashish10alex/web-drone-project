@@ -213,14 +213,19 @@ function getParameterByName(name) {
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
+const snrs = ['0', '-5', '-10', '-15', '-20', '-25', '-30'];
+const rn = Math.floor(Math.random() * snrs.length);
+
 var config = null;
 var configArg = getParameterByName("config");
 var configFile = '';
 if (configArg) {
   configFile = 'configs/' + configArg;
 } else {
-  configFile = 'configs/test.yaml';
+  configFile = `configs/snr${snrs[rn]}dB.yaml`;
 }
+console.log(configFile)
+
 
 
 // global variables
@@ -239,4 +244,7 @@ var interval2 = null;
 YAML.load(configFile, (function(result) {
   config = result;
   startup(result);
+  
 }));
+
+// document.getElementsByClassName('ui-body')[0].children[0].children[0].textContent = `AB test with ${configFile}$ config file`
