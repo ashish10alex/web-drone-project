@@ -127,5 +127,7 @@ dmypy.json
 #databse
 db/
 
+/Users/ashishalex/Documents/research/web_drone_project/webmushra/configs/resources/Drone_Noise_Test_Data
+
 #jupyter
 share/
