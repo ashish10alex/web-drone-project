@@ -213,8 +213,6 @@ function getParameterByName(name) {
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
-const snrs = ['0', '-5', '-10', '-15', '-20', '-25', '-30'];
-const rn = Math.floor(Math.random() * snrs.length);
 
 var config = null;
 var configArg = getParameterByName("config");
@@ -222,7 +220,7 @@ var configFile = '';
 if (configArg) {
   configFile = 'configs/' + configArg;
 } else {
-  configFile = `configs/snr${snrs[rn]}dB.yaml`;
+  configFile = `configs/idx0_20.yaml`
 }
 console.log(configFile)
 
