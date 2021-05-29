@@ -199,6 +199,7 @@ function startup(config) {
   pageTemplateRenderer = new PageTemplateRenderer(pageManager, config.showButtonPreviousPage, config.language);
   pageManager.addCallbackPageEventChanged(pageTemplateRenderer.refresh.bind(pageTemplateRenderer));
 
+
   addPagesToPageManager(pageManager, config.pages);
 
   interval2 = setInterval(function() {
@@ -220,10 +221,30 @@ var configFile = '';
 if (configArg) {
   configFile = 'configs/' + configArg;
 } else {
+  
   configFile = `configs/idx0_20.yaml`
 }
 console.log(configFile)
 
+let totalExamples = 770;
+let _window = 20; 
+start = 0;
+let ranges = [];
+
+// Generate range of indexes based on selected window size (_window)
+while (start < totalExamples){
+  if (start + _window > totalExamples){
+    ranges.push([start, totalExamples])
+    start = start +  _window
+  }else{
+    ranges.push([start,  start + _window])
+    start = start + _window;
+  }
+}
+const rn = Math.floor(Math.random() * ranges.length);
+console.log(rn, ranges[rn]);
+configFile = `configs/idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`
+console.log(configFile)
 
 
 // global variables
