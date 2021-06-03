@@ -4,7 +4,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX319.WAV.n121.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//RegressionFCNN/-15db/data/RegressionFCNN_SX319.WAV.n121.wav
@@ -26,7 +26,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX319.WAV.n122.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//DCUNet/-20db/data/DCUNet_SX319.WAV.n122.wav
@@ -37,7 +37,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SI1129.WAV.n121.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//DCUNet/-20db/data/DCUNet_SI1129.WAV.n121.wav
@@ -48,7 +48,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX409.WAV.n122.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//RegressionFCNN/-20db/data/RegressionFCNN_SX409.WAV.n122.wav
@@ -59,7 +59,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n122.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//DCUNet/-5db/data/DCUNet_SX139.WAV.n122.wav
@@ -70,7 +70,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX319.WAV.n122.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//DCUNet/-10db/data/DCUNet_SX319.WAV.n122.wav
@@ -81,7 +81,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX409.WAV.n122.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//DPTNet/0db/data/DPTNet_SX409.WAV.n122.wav
@@ -92,7 +92,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SI1129.WAV.n122.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//DCUNet/-25db/data/DCUNet_SI1129.WAV.n122.wav
@@ -103,7 +103,7 @@ pages:
   enableLooping: false
   id: trialAB2
   name: null
-  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SX139.WAV.n121.wav
+  reference: configs/resources/Drone_Noise_Test_Data//drone_noise_out//Input/SI1129.WAV.n121.wav
   showWaveform: true
   stimuli:
     C1: configs/resources/Drone_Noise_Test_Data//drone_noise_out//RegressionFCNN/-5db/data/RegressionFCNN_SI1129.WAV.n121.wav

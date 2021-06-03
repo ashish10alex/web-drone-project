@@ -222,9 +222,9 @@ if (configArg) {
   configFile = 'configs/' + configArg;
 } else {
   
-  configFile = `configs/idx0_20.yaml`
+  configFile = `configs/snr0dB.yaml`
 }
-console.log(configFile)
+
 
 let totalExamples = 770;
 let _window = 20; 
@@ -241,10 +241,13 @@ while (start < totalExamples){
     start = start + _window;
   }
 }
+
+
 const rn = Math.floor(Math.random() * ranges.length);
 console.log(rn, ranges[rn]);
 configFile = `configs/idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`
 console.log(configFile)
+configFile = 'configs/snr0dB.yaml'
 
 
 // global variables
@@ -259,11 +262,19 @@ var session = null;
 var pageTemplateRenderer = null;
 var interval2 = null;
 
+// YAML.load('configs/db.yaml', (result) => {
+//   config = result;
+//   console.log(config.files)
+//   debugger
+//   // startup(result);  
+// });
+
+
 
 YAML.load(configFile, (function(result) {
   config = result;
-  startup(result);
-  
+  console.log('bye')
+  startup(result);  
 }));
 
 // document.getElementsByClassName('ui-body')[0].children[0].children[0].textContent = `AB test with ${configFile}$ config file`
