@@ -12,3 +12,10 @@ First run
 followed by 
 
 `generate_yaml.ipynb`
+
+Add -
+
+
+- [ ] Better csv results file - df creation code -> `service.py` 
+- [ ] Pass data config files already done to avoid copies 
+
