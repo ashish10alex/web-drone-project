@@ -225,13 +225,17 @@ if (configArg) {
   configFile = `configs/snr0dB.yaml`
 }
 
+testType = 'baselineVsInput'
 
-let totalExamples = 770;
+let totalExamples;
+if (testType == 'baselineVsInput')
+ {totalExamples = 105}else{ totalExamples = 630}
 let _window = 20; 
 start = 0;
 let ranges = [];
 
 // Generate range of indexes based on selected window size (_window)
+const GenerateRanges = (totalExamples, _window) => {
 while (start < totalExamples){
   if (start + _window > totalExamples){
     ranges.push([start, totalExamples])
@@ -241,13 +245,19 @@ while (start < totalExamples){
     start = start + _window;
   }
 }
+return ranges  
+}
 
+ranges = GenerateRanges(totalExamples, _window)
 
 const rn = Math.floor(Math.random() * ranges.length);
 console.log(rn, ranges[rn]);
-configFile = `configs/idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`
+if (testType == 'baselineVsInput'){
+  configFile = `configs/baseline_idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`
+}else {configFile = `configs/idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`}
+
+// configFile = 'configs/baseline_idx0_20.yaml'
 console.log(configFile)
-configFile = 'configs/snr0dB.yaml'
 
 
 // global variables
@@ -270,10 +280,8 @@ var interval2 = null;
 // });
 
 
-
 YAML.load(configFile, (function(result) {
   config = result;
-  console.log('bye')
   startup(result);  
 }));
 
