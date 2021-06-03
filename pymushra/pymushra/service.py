@@ -31,9 +31,8 @@ def only_admin_allowlist(f):
 @app.route('/')
 @app.route('/<path:url>')
 def home(url='index.html'):
-    # import pdb; pdb.set_trace()
-    return send_from_directory(app.config['webmushra_dir'], url)
-
+    # return send_from_directory(app.config['webmushra_dir'], url )
+    return render_template(url, data='Helloooooooo')
 
 @app.route('/service/write.php', methods=['POST'])
 @app.route('/<testid>/collect', methods=['POST'])
