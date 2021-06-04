@@ -353,15 +353,18 @@ PairedComparisonPage.prototype.store = function () {
 	  this.session.trials[this.session.trials.length] = trial;	  
   }
   var choice = new PairedComparisonChoiceNew();
-  choice.clean_reference = this.reference.filepath.split('/')[7];
-  // choice.algs = this.condition1.filepath;
-  // debugger;
+     lastIndexReference = this.reference.filepath.split('/').length - 1
   lastIndexCondition1 = this.condition1.filepath.split('/').length - 1
   lastIndexCondition2 = this.condition2.filepath.split('/').length - 1
 
-  choice.denoised_1 = this.condition1.filepath.split('/')[lastIndexCondition1]
+
+  choice.clean_reference = this.reference.filepath.split('/')[lastIndexReference];
+    choice.denoised_1 = this.condition1.filepath.split('/')[lastIndexCondition1]
   choice.denoised_2 = this.condition2.filepath.split('/')[lastIndexCondition2] 
-  choice.snr = this.condition2.filepath.split('/')[7]  
+
+
+
+    choice.snr = this.condition2.filepath.split('/')[7]  
 
   if (this.choice === "a"){choice.preffered_utterance= this.condition1.filepath.split('/')[lastIndexCondition1]}
   else{choice.preffered_utterance= this.condition2.filepath.split('/')[lastIndexCondition2]}

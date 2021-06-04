@@ -3,6 +3,7 @@ from __future__ import division, absolute_import, print_function
 import os
 import json
 import pickle
+import pandas as pd
 from flask import Flask, request, jsonify, send_from_directory, send_file, \
     render_template, redirect, url_for, abort
 from tinyrecord import transaction
@@ -18,6 +19,7 @@ except ImportError:
 
 app = Flask(__name__)
 
+
 def only_admin_allowlist(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
@@ -32,7 +34,11 @@ def only_admin_allowlist(f):
 @app.route('/<path:url>')
 def home(url='index.html'):
     # return send_from_directory(app.config['webmushra_dir'], url )
-    return render_template(url, data='Helloooooooo')
+    # df = pd.read_csv('my_data.csv')
+    # data = list(df['configs'].unique())
+    data = 'Apple'
+    return render_template(url, data=data)
+
 
 @app.route('/service/write.php', methods=['POST'])
 @app.route('/<testid>/collect', methods=['POST'])
@@ -47,6 +53,53 @@ def collect(testid=''):
             payload = casting.cast_recursively(payload)
             insert = casting.json_to_dict(payload)
 
+            #add db here
+
+            columns = [k for k in payload['trials'][0]['responses'][0].keys()]
+            columns.append('uuid')
+            columns.append('configs')
+            
+            uuid = payload['trials'][0]['questionaire']['uuid']
+            config = payload['config'].split('/')[-1]
+
+            uuids = []
+            clean_references = []
+            denoised_1 = []
+            denoised_2 = []
+            preffered_utterance = []
+            time = []
+            configs = []
+            for i in range(len(payload['trials'][0]['responses'])):
+                uuids.append(uuid)
+                configs.append(config)
+                clean_references.append(
+                      payload['trials'][0]['responses'][i]['clean_reference'])
+                denoised_1.append(
+                     payload['trials'][0]['responses'][i]['denoised_1'])
+                denoised_2.append(
+                     payload['trials'][0]['responses'][i]['denoised_2'])
+                preffered_utterance.append(
+                     payload['trials'][0]['responses'][i]['preffered_utterance'])
+                time.append(
+                     payload['trials'][0]['responses'][i]['time'])
+
+            df = pd.DataFrame(columns=columns)
+            df['clean_reference'] = pd.Series(clean_references)
+            df['denoised_1'] = pd.Series(denoised_1)
+            df['denoised_2'] = pd.Series(denoised_2)
+            df['preffered_utterance'] = pd.Series(preffered_utterance)
+            df['uuid'] = pd.Series(uuids)
+            df['time'] = pd.Series(time)
+            df['configs'] = pd.Series(configs)
+            print('df: ', df)
+            print(' ')
+            print('payload: ', payload)
+
+            df_og  = pd.read_csv('my_data.csv', index_col=False)
+            df_og = df_og.append(df) 
+            df_og.to_csv('my_data.csv', index=False)
+
+            
             collection = db.table(payload['trials'][0]['testId'])
             with transaction(collection):
                 inserted_ids = collection.insert_multiple(insert)

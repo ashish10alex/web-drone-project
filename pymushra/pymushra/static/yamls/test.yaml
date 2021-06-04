@@ -11,6 +11,20 @@ pages:
     C2: static/audio_data/test.wav 
   type: paired_comparison
   unforced: null
+
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/audio_data/test.wav
+  showWaveform: true
+  stimuli:
+    C1: static/audio_data/test.wav  
+    C2: static/audio_data/test.wav 
+  type: paired_comparison
+  unforced: null
+
+
 - content: Thank you for attending
   name: Thank you
   showResults: false
@@ -19,5 +33,5 @@ pages:
 remoteService: service/write.php
 showButtonPreviousPage: true
 stopOnErrors: true
-testId: ab_noloop
+testId: Regression_experiment
 testname: AB Test

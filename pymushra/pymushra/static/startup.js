@@ -122,8 +122,7 @@ for (var i = 0; i < $("body").children().length; i++) {
 
 
 function startup(config, t) {
-    console.log(t)
-    console.log(config)
+    console.log(data)
   if (config == null) {
     errorHandler.sendError("URL couldn't be found!");
     callbackURLFound();
@@ -259,7 +258,7 @@ if (testType == 'baselineVsInput'){
 }else {configFile = `configs/idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`}
 
 // configFile = 'static/baseline_idx0_20.yaml'
-configFile = 'static/test.yaml'
+configFile = 'static/yamls/test.yaml'
 console.log(configFile)
 
 

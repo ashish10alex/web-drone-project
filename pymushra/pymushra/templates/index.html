@@ -22,8 +22,8 @@ will be prosecuted to the maximum extent possible under law.
   <meta name="description" content="webMUSHRA by International Audio Laboratories Erlangen">
   <meta name="author" content="International Audio Laboratories Erlangen">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico" />
-  <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.io')}}"> -->
+  <!-- <link rel="shortcut icon" href="favicon.ico" /> -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.io')}}">
 
   <!-- jQuery / jQuery Mobile -->
   <!-- <link type="text/css" href="design/jquery.mobile-theme/themes/default/jquery.mobile.icons.min.css" rel="stylesheet" /> -->
@@ -249,11 +249,11 @@ will be prosecuted to the maximum extent possible under law.
   <script src="{{ url_for('static', filename='startup.js')}}"></script>
   <script>
 
-    let t = {{ data | tojson}}
+    let data  = {{ data | tojson}}
 
-    YAML.load(configFile = 'static/test.yaml', (function (result) {
+    YAML.load(configFile = 'static/yamls/test.yaml', (function (result) {
       config = result;
-      startup(result, t);
+      startup(result, data);
 
     }));
   </script>
