@@ -18,7 +18,7 @@ except ImportError:
     from StringIO import StringIO
 
 app = Flask(__name__)
-
+csv_database = 'database.csv'
 
 def only_admin_allowlist(f):
     @wraps(f)
@@ -33,11 +33,15 @@ def only_admin_allowlist(f):
 @app.route('/')
 @app.route('/<path:url>')
 def home(url='index.html'):
+    #Old version
     # return send_from_directory(app.config['webmushra_dir'], url )
-    # df = pd.read_csv('my_data.csv')
-    # data = list(df['configs'].unique())
-    data = 'Apple'
-    return render_template(url, data=data)
+
+    #New version
+    if csv_database in os.listdir():
+        df_og = pd.read_csv(csv_database)
+        data = list(df_og['configs'].unique())
+        return render_template(url, data=data)
+    return render_template(url, data=None)
 
 
 @app.route('/service/write.php', methods=['POST'])
@@ -91,13 +95,17 @@ def collect(testid=''):
             df['uuid'] = pd.Series(uuids)
             df['time'] = pd.Series(time)
             df['configs'] = pd.Series(configs)
-            print('df: ', df)
-            print(' ')
-            print('payload: ', payload)
+            # print('df: ', df)
+            # print(' ')
+            # print('payload: ', payload)
+            if csv_database in os.listdir():
+                df_og = pd.read_csv(csv_database, index_col=False)
+                df_og = df_og.append(df)
+                df_og.to_csv(csv_database, index=False)
+            else: df.to_csv(csv_database, index=False)
 
-            df_og  = pd.read_csv('my_data.csv', index_col=False)
-            df_og = df_og.append(df) 
-            df_og.to_csv('my_data.csv', index=False)
+
+            df_og.to_csv('database.csv', index=False)
 
             
             collection = db.table(payload['trials'][0]['testId'])
