@@ -13,6 +13,7 @@ Key Experiment details -
 * Total number of pairs - 
     * Baseline vs Input  - 105
     * Remaining algorithms - 630
+* We have two separate setups for Baseline vs Input and Remaining algorithms which can be switched easily by commonad line argument as show in Setup steps part of this README. 
 
  
  Audio files for this experiment are in  -
@@ -33,19 +34,20 @@ Key Experiment details -
 Please skip to bullet point 2 as I have aleady generated these meta data files. 
 
 
-1. Meta data Genration - 
+1. <b> Meta data Genration </b> - 
     If you want to generate your own meta data you will need to change paths accordingly. The current paths are based on paths from Jade and my personal PC
 
     `meta_data.ipynb` - Generate CSV paths for audio files for various SNRs and mdoels
 
 
 
-    `generate_yaml_full.ipynb` - Yaml files for remaining 4 algoritms `['DCUNet', 'DPTNet', 'SMoLnet', 'WaveUNet']`
+    `generate_yaml_full.ipynb` - Yaml files for remaining 4 algoritms `['DCUNet', 'DPTNet', 'SMoLnet', 'WaveUNet']` 
+
     `generate_yaml_full-noisy_baseline_combinations.ipynb` - Yaml files for Baseline model which will be compared to Input only. 
 
     
         
-2. Run the server locally - 
+2. <b>Run the server locally </b> - 
 
     ```
     git clone https://github.com/ashish10alex/web-drone-project.git
@@ -53,9 +55,26 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
     python3 -m venv .
     source bin/activate
     pip install -e pymushra
-    pymushra server
+
+    # For other_model_combinations 
+    pymushra server --experiment_name "other_model_combinations"
+    
+    OR
+    
+    # For baseline_vs_noisy
+    pymushra server --experiment_name "other_model_combinations"
+
     ```
     Then open `http://localhost:5000`
+
+3. <b> Database </b> - 
+
+* To see all the results for both sets of experiments go to -  `http://localhost:5000/admin` and click on `preview`
+
+* But the main database which we will use for evaulating results is in the root of the repository -  `database_baseline_vs_noisy.csv` and `database_other_model_combinations.csv`
+
+* To look at the experiments done so far go to -`http://localhost:5000/finished` [warning - this random test data at the moment]
+
 
 
 

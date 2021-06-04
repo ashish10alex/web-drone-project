@@ -19,10 +19,6 @@ except ImportError:
     from StringIO import StringIO
 
 app = Flask(__name__)
-# experiment_name= 'baseline_vs_noisy'
-experiment_name= 'other_model_combinations'
-csv_database = f'database_{experiment_name}.csv'
-
 os.makedirs('db', exist_ok=True)
 
 def only_admin_allowlist(f):
@@ -42,7 +38,7 @@ def get_seen_yaml_files(csv_database):
     else: seen_files = []
     return seen_files
 
-def select_unique_yaml_files(experiment_name):
+def select_unique_yaml_files(experiment_name, csv_database):
     all_files = os.listdir(f'pymushra/pymushra/static/yamls/{experiment_name}')
 
     #get seen files and remove them off the the list off all files
@@ -60,17 +56,22 @@ def home(url='index.html'):
     # return send_from_directory(app.config['webmushra_dir'], url )
 
     #New version
-   conf_files, seen_files = select_unique_yaml_files(experiment_name=experiment_name)
-   if len(conf_files) == 0: return  render_template('finished.html', seen_files=seen_files)
+    experiment_name = app.config['experiment_name']
+    csv_database = f'database_{experiment_name}.csv'
 
-   # select a random config file which has not yet been done so far 
-   conf_file = conf_files[random.randint(0, len(conf_files)-1)]
-   conf_file_path = f'static/yamls/{experiment_name}/{conf_file}'
-   return render_template(url, conf_file_path=conf_file_path)
+    conf_files, seen_files = select_unique_yaml_files(experiment_name=experiment_name, csv_database=csv_database)
+    if len(conf_files) == 0: return  render_template('finished.html', seen_files=seen_files)
+
+    # select a random config file which has not yet been done so far 
+    conf_file = conf_files[random.randint(0, len(conf_files)-1)]
+    conf_file_path = f'static/yamls/{experiment_name}/{conf_file}'
+    return render_template(url, conf_file_path=conf_file_path)
 
 @app.route('/finished')
 @only_admin_allowlist
 def finishedExperiments():
+    experiment_name = app.config['experiment_name'][0]
+    csv_database = f'database_{experiment_name}.csv'
     seen_yamls = get_seen_yaml_files(csv_database) 
     return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
 
