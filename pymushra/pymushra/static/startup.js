@@ -258,8 +258,8 @@ if (testType == 'baselineVsInput'){
 }else {configFile = `configs/idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`}
 
 // configFile = 'static/baseline_idx0_20.yaml'
-configFile = 'static/yamls/test.yaml'
-console.log(configFile)
+configFile = 'static/yamls/baseline_vs_noisy/baseline_idx0_20.yaml'
+console.log(`ConfigFile: ${configFile}`)
 
 
 // global variables

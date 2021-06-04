@@ -109,9 +109,6 @@ def collection_to_df(collection):
     # import pdb; pdb.set_trace();
 
     df[('wm', 'date')] = pd.to_datetime(df[('wm', 'date')])
-    # save output as csv
-    df.to_csv('results.csv')
-
     return df
 
 

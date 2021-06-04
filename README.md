@@ -16,6 +16,7 @@ followed by
 Add -
 
 
+- [ ] Check if csv database exsists else: create one
 - [ ] Better csv results file - df creation code -> `service.py` 
 - [ ] Pass data config files already done to avoid copies 
 

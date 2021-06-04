@@ -1,0 +1,12 @@
+clean_reference,denoised_1,denoised_2,preffered_utterance,time,uuid,configs,snr
+test.wav,test.wav,test.wav,test.wav,Fri Jun 04 2021 15:23:27 GMT 0100 (British Summer Time),cefad2f5-0156-4195-89b1-cbc4754771ec,test.yaml,
+test.wav,test.wav,test.wav,test.wav,Fri Jun 04 2021 15:23:27 GMT 0100 (British Summer Time),cefad2f5-0156-4195-89b1-cbc4754771ec,test.yaml,
+test.wav,test.wav,test.wav,test.wav,Fri Jun 04 2021 15:23:37 GMT 0100 (British Summer Time),ae3ca5dc-a33b-4e4c-a842-06613907cc6a,test.yaml,
+test.wav,test.wav,test.wav,test.wav,Fri Jun 04 2021 15:23:37 GMT 0100 (British Summer Time),ae3ca5dc-a33b-4e4c-a842-06613907cc6a,test.yaml,
+test.wav,test.wav,test.wav,test.wav,Fri Jun 04 2021 15:24:18 GMT 0100 (British Summer Time),15c25fa7-afde-4f76-8573-a468fb4fd119,test.yaml,
+test.wav,test.wav,test.wav,test.wav,Fri Jun 04 2021 15:24:18 GMT 0100 (British Summer Time),15c25fa7-afde-4f76-8573-a468fb4fd119,test.yaml,
+clean_SI1759.WAV.n121.wav,noisy_SI1759.WAV.n121.wav,RegressionFCNN_SI1759.WAV.n121.wav,RegressionFCNN_SI1759.WAV.n121.wav,Fri Jun 04 2021 15:40:53 GMT 0100 (British Summer Time),29d529f8-fbb3-47b5-8525-c8d600049a1e,baseline_idx100_105.yaml,
+clean_SX409.WAV.n121.wav,noisy_SX409.WAV.n121.wav,RegressionFCNN_SX409.WAV.n121.wav,RegressionFCNN_SX409.WAV.n121.wav,Fri Jun 04 2021 15:40:53 GMT 0100 (British Summer Time),29d529f8-fbb3-47b5-8525-c8d600049a1e,baseline_idx100_105.yaml,
+clean_SI499.WAV.n122.wav,noisy_SI499.WAV.n122.wav,RegressionFCNN_SI499.WAV.n122.wav,RegressionFCNN_SI499.WAV.n122.wav,Fri Jun 04 2021 15:40:53 GMT 0100 (British Summer Time),29d529f8-fbb3-47b5-8525-c8d600049a1e,baseline_idx100_105.yaml,
+clean_SI499.WAV.n122.wav,noisy_SI499.WAV.n122.wav,RegressionFCNN_SI499.WAV.n122.wav,RegressionFCNN_SI499.WAV.n122.wav,Fri Jun 04 2021 15:40:53 GMT 0100 (British Summer Time),29d529f8-fbb3-47b5-8525-c8d600049a1e,baseline_idx100_105.yaml,
+clean_SI1129.WAV.n121.wav,noisy_SI1129.WAV.n121.wav,RegressionFCNN_SI1129.WAV.n121.wav,RegressionFCNN_SI1129.WAV.n121.wav,Fri Jun 04 2021 15:40:53 GMT 0100 (British Summer Time),29d529f8-fbb3-47b5-8525-c8d600049a1e,baseline_idx100_105.yaml,

@@ -250,8 +250,10 @@ will be prosecuted to the maximum extent possible under law.
   <script>
 
     let data  = {{ data | tojson}}
+    
+   // We can perhaps pass the yaml file to be loaded directly from server 
 
-    YAML.load(configFile = 'static/yamls/test.yaml', (function (result) {
+    YAML.load(configFile = 'static/yamls/baseline_vs_noisy/baseline_idx100_105.yaml', (function (result) {
       config = result;
       startup(result, data);
 
