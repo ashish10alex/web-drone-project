@@ -23,6 +23,8 @@ app = Flask(__name__)
 experiment_name= 'other_model_combinations'
 csv_database = f'database_{experiment_name}.csv'
 
+os.makedirs('db', exist_ok=True)
+
 def only_admin_allowlist(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
