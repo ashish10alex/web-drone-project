@@ -13,7 +13,7 @@ Key Experiment details -
 * Total number of pairs - 
     * Baseline vs Input  - 105
     * Remaining algorithms - 630
-* We have two separate setups for Baseline vs Input and Remaining algorithms which can be switched easily by commonad line argument as show in Setup steps part of this README. 
+* We have two separate setups for Baseline vs Input and Remaining algorithms which can be switched easily by command line argument as show in Setup steps part of this README. 
 
  
  Audio files for this experiment are in  -
