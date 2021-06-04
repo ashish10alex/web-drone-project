@@ -38,6 +38,7 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+pyvenv.cfg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -130,3 +131,4 @@ webmushra/configs/resources/Drone_Noise_Test_Data
 
 #jupyter
 share/
+webmushra_

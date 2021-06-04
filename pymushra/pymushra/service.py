@@ -32,6 +32,7 @@ def only_admin_allowlist(f):
             return abort(403)
     return wrapped
 
+
 def get_seen_yaml_files(csv_database):
     if csv_database in os.listdir():
         df_og = pd.read_csv(csv_database)
@@ -66,6 +67,7 @@ def home(url='index.html'):
    return render_template(url, conf_file_path=conf_file_path)
 
 @app.route('/finished')
+@only_admin_allowlist
 def finishedExperiments():
     seen_yamls = get_seen_yaml_files(csv_database) 
     return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
@@ -153,6 +155,8 @@ def collect(testid=''):
 @app.route('/admin/list')
 @only_admin_allowlist
 def admin_list():
+
+    # import pdb; pdb.set_trace();
     db = app.config['db']
     collection_names = db.tables()
 
@@ -171,15 +175,15 @@ def admin_list():
         if len(df) > 0
     ]
 
-    configs = utils.get_configs(
-        os.path.join(app.config['webmushra_dir'], "configs")
-    )
-    # import pdb; pdb.set_trace();
+#     configs = utils.get_configs(
+#         os.path.join(app.config['webmushra_dir'], "configs")
+#     )
+#     # import pdb; pdb.set_trace();
 
     return render_template(
         "admin/list.html",
         collections=collections,
-        configs=configs
+        # configs=configs
     )
 
 
