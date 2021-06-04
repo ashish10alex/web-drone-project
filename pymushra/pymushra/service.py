@@ -4,6 +4,7 @@ import os
 import json
 import pickle
 import pandas as pd
+import random
 from flask import Flask, request, jsonify, send_from_directory, send_file, \
     render_template, redirect, url_for, abort
 from tinyrecord import transaction
@@ -18,7 +19,9 @@ except ImportError:
     from StringIO import StringIO
 
 app = Flask(__name__)
-csv_database = 'database.csv'
+# experiment_name= 'baseline_vs_noisy'
+experiment_name= 'other_model_combinations'
+csv_database = f'database_{experiment_name}.csv'
 
 def only_admin_allowlist(f):
     @wraps(f)
@@ -29,6 +32,23 @@ def only_admin_allowlist(f):
             return abort(403)
     return wrapped
 
+def get_seen_yaml_files(csv_database):
+    if csv_database in os.listdir():
+        df_og = pd.read_csv(csv_database)
+        seen_files = list(df_og['configs'].unique())
+    else: seen_files = []
+    return seen_files
+
+def select_unique_yaml_files(experiment_name):
+    all_files = os.listdir(f'pymushra/pymushra/static/yamls/{experiment_name}')
+
+    #get seen files and remove them off the the list off all files
+    seen_files = get_seen_yaml_files(csv_database)
+    for file in seen_files:
+        all_files.remove(file)
+        return all_files, seen_files
+    seen_files = []
+    return all_files, seen_files
 
 @app.route('/')
 @app.route('/<path:url>')
@@ -37,11 +57,18 @@ def home(url='index.html'):
     # return send_from_directory(app.config['webmushra_dir'], url )
 
     #New version
-    if csv_database in os.listdir():
-        df_og = pd.read_csv(csv_database)
-        data = list(df_og['configs'].unique())
-        return render_template(url, data=data)
-    return render_template(url, data=None)
+   conf_files, seen_files = select_unique_yaml_files(experiment_name=experiment_name)
+   if len(conf_files) == 0: return  render_template('finished.html', seen_files=seen_files)
+
+   # select a random config file which has not yet been done so far 
+   conf_file = conf_files[random.randint(0, len(conf_files)-1)]
+   conf_file_path = f'static/yamls/{experiment_name}/{conf_file}'
+   return render_template(url, conf_file_path=conf_file_path)
+
+@app.route('/finished')
+def finishedExperiments():
+    seen_yamls = get_seen_yaml_files(csv_database) 
+    return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
 
 
 @app.route('/service/write.php', methods=['POST'])
@@ -104,10 +131,6 @@ def collect(testid=''):
                 df_og.to_csv(csv_database, index=False)
             else: df.to_csv(csv_database, index=False)
 
-
-            df_og.to_csv('database.csv', index=False)
-
-            
             collection = db.table(payload['trials'][0]['testId'])
             with transaction(collection):
                 inserted_ids = collection.insert_multiple(insert)
@@ -138,7 +161,6 @@ def admin_list():
     ]
 
     print(collection_dfs)
-    # import pdb; pdb.set_trace()
 
     collections = [
         {

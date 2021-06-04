@@ -121,8 +121,7 @@ for (var i = 0; i < $("body").children().length; i++) {
 
 
 
-function startup(config, t) {
-    console.log(data)
+function startup(config) {
   if (config == null) {
     errorHandler.sendError("URL couldn't be found!");
     callbackURLFound();
@@ -219,47 +218,12 @@ function getParameterByName(name) {
 var config = null;
 var configArg = getParameterByName("config");
 var configFile = '';
-if (configArg) {
-  configFile = 'configs/' + configArg;
-} else {
+// if (configArg) {
+//   configFile = 'configs/' + configArg;
+// } else {
   
-  configFile = `configs/snr0dB.yaml`
-}
-
-testType = 'baselineVsInput'
-
-let totalExamples;
-if (testType == 'baselineVsInput')
- {totalExamples = 105}else{ totalExamples = 630}
-let _window = 20; 
-start = 0;
-let ranges = [];
-
-// Generate range of indexes for conf files based on selected window size (_window)
-const GenerateRanges = (totalExamples, _window) => {
-while (start < totalExamples){
-  if (start + _window > totalExamples){
-    ranges.push([start, totalExamples])
-    start = start +  _window
-  }else{
-    ranges.push([start,  start + _window])
-    start = start + _window;
-  }
-}
-return ranges  
-}
-
-ranges = GenerateRanges(totalExamples, _window)
-
-const rn = Math.floor(Math.random() * ranges.length);
-console.log(rn, ranges[rn]);
-if (testType == 'baselineVsInput'){
-  configFile = `configs/baseline_idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`
-}else {configFile = `configs/idx${ranges[rn][0]}_${ranges[rn][1]}.yaml`}
-
-// configFile = 'static/baseline_idx0_20.yaml'
-configFile = 'static/yamls/baseline_vs_noisy/baseline_idx0_20.yaml'
-console.log(`ConfigFile: ${configFile}`)
+//   configFile = `configs/snr0dB.yaml`
+// }
 
 
 // global variables
@@ -273,13 +237,6 @@ var dataSender = null;
 var session = null;
 var pageTemplateRenderer = null;
 var interval2 = null;
-
-// YAML.load('configs/db.yaml', (result) => {
-//   config = result;
-//   console.log(config.files)
-//   debugger
-//   // startup(result);  
-// });
 
 
 // YAML.load(configFile, (function(result) {

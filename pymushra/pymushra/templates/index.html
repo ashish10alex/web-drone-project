@@ -249,14 +249,11 @@ will be prosecuted to the maximum extent possible under law.
   <script src="{{ url_for('static', filename='startup.js')}}"></script>
   <script>
 
-    let data  = {{ data | tojson}}
+let configFile_ = {{ conf_file_path | tojson}}
     
-   // We can perhaps pass the yaml file to be loaded directly from server 
-
-    YAML.load(configFile = 'static/yamls/baseline_vs_noisy/baseline_idx100_105.yaml', (function (result) {
+   YAML.load(configFile = configFile_, (function (result) {
       config = result;
-      startup(result, data);
-
+      startup(result);
     }));
   </script>
   <!-- /build -->
