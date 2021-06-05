@@ -70,16 +70,25 @@ def home(url='index.html'):
 @app.route('/finished')
 @only_admin_allowlist
 def finishedExperiments():
-    experiment_name = app.config['experiment_name'][0]
+    experiment_name = app.config['experiment_name']
     csv_database = f'database_{experiment_name}.csv'
     seen_yamls = get_seen_yaml_files(csv_database) 
     return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
 
+@app.route('/results')
+@only_admin_allowlist
+def results():
+    experiment_name = app.config['experiment_name']
+    csv_database = f'database_{experiment_name}.csv'
+    df_html = pd.read_csv(csv_database).to_html()
+    return render_template('results.html', df_html=df_html, experiment_name=experiment_name)
 
 @app.route('/service/write.php', methods=['POST'])
 @app.route('/<testid>/collect', methods=['POST'])
 @app.route('/collect', methods=['POST'])
 def collect(testid=''):
+    experiment_name = app.config['experiment_name']
+    csv_database = f'database_{experiment_name}.csv'
     if request.headers['Content-Type'].startswith(
             'application/x-www-form-urlencoded'
     ):
@@ -103,6 +112,7 @@ def collect(testid=''):
             denoised_1 = []
             denoised_2 = []
             preffered_utterance = []
+            snrs = []
             time = []
             configs = []
             for i in range(len(payload['trials'][0]['responses'])):
@@ -114,6 +124,8 @@ def collect(testid=''):
                      payload['trials'][0]['responses'][i]['denoised_1'])
                 denoised_2.append(
                      payload['trials'][0]['responses'][i]['denoised_2'])
+                snrs.append(
+                     payload['trials'][0]['responses'][i]['snr'])
                 preffered_utterance.append(
                      payload['trials'][0]['responses'][i]['preffered_utterance'])
                 time.append(
@@ -127,6 +139,7 @@ def collect(testid=''):
             df['uuid'] = pd.Series(uuids)
             df['time'] = pd.Series(time)
             df['configs'] = pd.Series(configs)
+            df['snr'] = pd.Series(snrs)
             # print('df: ', df)
             # print(' ')
             # print('payload: ', payload)

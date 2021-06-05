@@ -363,8 +363,7 @@ PairedComparisonPage.prototype.store = function () {
   choice.denoised_2 = this.condition2.filepath.split('/')[lastIndexCondition2] 
 
 
-
-    choice.snr = this.condition2.filepath.split('/')[7]  
+ choice.snr = this.condition2.filepath.split('/')[8]  
 
   if (this.choice === "a"){choice.preffered_utterance= this.condition1.filepath.split('/')[lastIndexCondition1]}
   else{choice.preffered_utterance= this.condition2.filepath.split('/')[lastIndexCondition2]}

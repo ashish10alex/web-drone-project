@@ -25,7 +25,6 @@ DataSender.prototype.send = function(_session) {
   }
   if(httpReq.responseText != "" || httpReq.status != 200){
     console.log(httpReq.responseText);
-    console.log('hello')
     return true;
   }else{
     return false;

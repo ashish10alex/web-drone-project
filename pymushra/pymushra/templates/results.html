@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if df_html|safe %} 
+    <h2> Results for {{experiment_name}} </h2>
+        {{df_html | safe }}
+    {% endif %}
+{% endblock %}
