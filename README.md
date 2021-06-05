@@ -69,11 +69,13 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
 
 3. <b> Database </b> - 
 
-* To see all the results for both sets of experiments go to -  `http://localhost:5000/admin` and click on `preview`
-
 * But the main database which we will use for evaulating results is in the root of the repository -  `database_baseline_vs_noisy.csv` and `database_other_model_combinations.csv`
 
+* To view the results for each subset separately go to - `http://localhost:5000/results` 
+
 * To look at the experiments done so far go to -`http://localhost:5000/finished` [warning - this random test data at the moment]
+
+*  To see all the results for both sets of experiments go to -  `http://localhost:5000/admin` and click on `preview`
 
 
 
