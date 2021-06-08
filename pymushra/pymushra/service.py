@@ -88,20 +88,19 @@ def home(url='index.html'):
 #     seen_yamls = get_seen_yaml_files(csv_database) 
 #     return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
 
-@app.route('/results_baseline_vs_noisy')
+@app.route('/results', methods=['GET', 'POST'])
 @only_admin_allowlist
-def results_baseline_vs_noisy():
-    csv_database = f'database_baseline_vs_noisy.csv'
-    df_html = pd.read_csv(csv_database).to_html()
-    return render_template('results.html', df_html=df_html)
-
-@app.route('/results_other_model_combinations')
-@only_admin_allowlist
-def results_other_model_combinations():
-    csv_database = f'database_other_model_combinations.csv'
-    df_html = pd.read_csv(csv_database).to_html()
-    return render_template('results.html', df_html=df_html)
-
+def results():
+    if request.method == 'POST':
+        try:
+            experiment_name = request.values.get('exp_name')
+            csv_database = f'database_{experiment_name}.csv'
+            df_html = pd.read_csv(csv_database).to_html()
+            return render_template('results.html', df_html=df_html, experiment_name=experiment_name)
+        except:
+            print('Somethings wrong')
+    return render_template('results.html')
+    
 
 @app.route('/service/write.php', methods=['POST'])
 @app.route('/<testid>/collect', methods=['POST'])
