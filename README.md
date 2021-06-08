@@ -13,7 +13,7 @@ Key Experiment details -
 * Total number of pairs - 
     * Baseline vs Input  - 105
     * Remaining algorithms - 630
-* We have two separate setups for Baseline vs Input and Remaining algorithms which can be switched easily by command line argument as show in Setup steps part of this README. 
+
 
  
  Audio files for this experiment are in  -
@@ -55,14 +55,7 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
     python3 -m venv .
     source bin/activate
     pip install -e pymushra
-
-    # For other_model_combinations 
-    pymushra server --experiment_name "other_model_combinations"
-    
-    OR
-    
-    # For baseline_vs_noisy
-    pymushra server --experiment_name "other_model_combinations"
+    pymushra server 
 
     ```
     Then open `http://localhost:5000`
@@ -71,9 +64,10 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
 
 * But the main database which we will use for evaulating results is in the root of the repository -  `database_baseline_vs_noisy.csv` and `database_other_model_combinations.csv`
 
-* To view the results for each subset separately go to - `http://localhost:5000/results` 
-
-* To look at the experiments done so far go to -`http://localhost:5000/finished` [warning - this random test data at the moment]
+* To view the results for each subset separately go to - [Error handling and function clean up TBD]
+   * `http://localhost:5000/results_baseline_vs_noisy` 
+   * `http://localhost:5000/results/results_other_model_combinations` 
+ 
 
 *  To see all the results for both sets of experiments go to -  `http://localhost:5000/admin` and click on `preview`
 
