@@ -49,6 +49,9 @@ def select_unique_yaml_files(experiment_name, csv_database):
     seen_files = []
     return all_files, seen_files
 
+experiment_names = ['baseline_vs_noisy', 'other_model_combinations']
+database_names = [f'database_{experiment_names[0]}.csv', f'database_{experiment_names[1]}.csv']
+
 @app.route('/')
 @app.route('/<path:url>')
 def home(url='index.html'):
@@ -56,39 +59,55 @@ def home(url='index.html'):
     # return send_from_directory(app.config['webmushra_dir'], url )
 
     #New version
-    experiment_name = app.config['experiment_name']
-    csv_database = f'database_{experiment_name}.csv'
+    # experiment_name = app.config['experiment_name']
+    
+    all_conf_files = []
+    all_seen_files = []
+    for exp_name, db_name in zip(experiment_names, database_names):
+        conf_files, seen_files = select_unique_yaml_files(experiment_name=exp_name, csv_database=db_name)
+        all_conf_files += conf_files
+        all_seen_files += seen_files
+    print('all_conf_files', all_conf_files)
+    print('all_seen_files', all_seen_files)
 
-    conf_files, seen_files = select_unique_yaml_files(experiment_name=experiment_name, csv_database=csv_database)
-    if len(conf_files) == 0: return  render_template('finished.html', seen_files=seen_files)
+    if len(all_conf_files) == 0: return  render_template('finished.html', seen_files=all_seen_files)
 
     # select a random config file which has not yet been done so far 
-    conf_file = conf_files[random.randint(0, len(conf_files)-1)]
-    conf_file_path = f'static/yamls/{experiment_name}/{conf_file}'
+    conf_file = all_conf_files[random.randint(0, len(all_conf_files)-1)]
+    print(conf_file)
+    if conf_file.split('_')[0] == 'baseline':
+        conf_file_path = f'static/yamls/{experiment_names[0]}/{conf_file}'
+        return render_template(url, conf_file_path=conf_file_path)
+    conf_file_path = f'static/yamls/{experiment_names[1]}/{conf_file}'
     return render_template(url, conf_file_path=conf_file_path)
 
-@app.route('/finished')
-@only_admin_allowlist
-def finishedExperiments():
-    experiment_name = app.config['experiment_name']
-    csv_database = f'database_{experiment_name}.csv'
-    seen_yamls = get_seen_yaml_files(csv_database) 
-    return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
+# @app.route('/finished')
+# @only_admin_allowlist
+# def finishedExperiments():
+#     csv_database = f'database_{experiment_name}.csv'
+#     seen_yamls = get_seen_yaml_files(csv_database) 
+#     return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
 
-@app.route('/results')
+@app.route('/results_baseline_vs_noisy')
 @only_admin_allowlist
-def results():
-    experiment_name = app.config['experiment_name']
-    csv_database = f'database_{experiment_name}.csv'
+def results_baseline_vs_noisy():
+    csv_database = f'database_baseline_vs_noisy.csv'
     df_html = pd.read_csv(csv_database).to_html()
-    return render_template('results.html', df_html=df_html, experiment_name=experiment_name)
+    return render_template('results.html', df_html=df_html)
+
+@app.route('/results_other_model_combinations')
+@only_admin_allowlist
+def results_other_model_combinations():
+    csv_database = f'database_other_model_combinations.csv'
+    df_html = pd.read_csv(csv_database).to_html()
+    return render_template('results.html', df_html=df_html)
+
 
 @app.route('/service/write.php', methods=['POST'])
 @app.route('/<testid>/collect', methods=['POST'])
 @app.route('/collect', methods=['POST'])
 def collect(testid=''):
-    experiment_name = app.config['experiment_name']
-    csv_database = f'database_{experiment_name}.csv'
+    # csv_database = f'database_{experiment_name}.csv'
     if request.headers['Content-Type'].startswith(
             'application/x-www-form-urlencoded'
     ):
@@ -106,7 +125,11 @@ def collect(testid=''):
             
             uuid = payload['trials'][0]['questionaire']['uuid']
             config = payload['config'].split('/')[-1]
-
+            
+            if config.split('_')[0] == 'baseline':
+                csv_database = f'database_{experiment_names[0]}.csv'
+            else: csv_database = f'database_{experiment_names[1]}.csv'
+            
             uuids = []
             clean_references = []
             denoised_1 = []
@@ -140,9 +163,7 @@ def collect(testid=''):
             df['time'] = pd.Series(time)
             df['configs'] = pd.Series(configs)
             df['snr'] = pd.Series(snrs)
-            # print('df: ', df)
-            # print(' ')
-            # print('payload: ', payload)
+            
             if csv_database in os.listdir():
                 df_og = pd.read_csv(csv_database, index_col=False)
                 df_og = df_og.append(df)
