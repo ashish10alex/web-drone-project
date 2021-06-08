@@ -64,9 +64,8 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
 
 * But the main database which we will use for evaulating results is in the root of the repository -  `database_baseline_vs_noisy.csv` and `database_other_model_combinations.csv`
 
-* To view the results for each subset separately go to - [Error handling and function clean up TBD]
-   * `http://localhost:5000/results_baseline_vs_noisy` 
-   * `http://localhost:5000/results/results_other_model_combinations` 
+* To view the results for each subset can be viewed by switching btw dropdown menus - [Error handling TBD]
+   * `http://localhost:5000/result` 
  
 
 *  To see all the results for both sets of experiments go to -  `http://localhost:5000/admin` and click on `preview`
