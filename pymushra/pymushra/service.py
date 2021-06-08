@@ -67,14 +67,14 @@ def home(url='index.html'):
         conf_files, seen_files = select_unique_yaml_files(experiment_name=exp_name, csv_database=db_name)
         all_conf_files += conf_files
         all_seen_files += seen_files
-    print('all_conf_files', all_conf_files)
-    print('all_seen_files', all_seen_files)
+    # print('all_conf_files', all_conf_files)
+    # print('all_seen_files', all_seen_files)
 
     if len(all_conf_files) == 0: return  render_template('finished.html', seen_files=all_seen_files)
 
     # select a random config file which has not yet been done so far 
     conf_file = all_conf_files[random.randint(0, len(all_conf_files)-1)]
-    print(conf_file)
+    # print(conf_file)
     if conf_file.split('_')[0] == 'baseline':
         conf_file_path = f'static/yamls/{experiment_names[0]}/{conf_file}'
         return render_template(url, conf_file_path=conf_file_path)
@@ -173,7 +173,7 @@ def collect(testid=''):
             collection = db.table(payload['trials'][0]['testId'])
             with transaction(collection):
                 inserted_ids = collection.insert_multiple(insert)
-            print(inserted_ids)
+            # print(inserted_ids)
 
             return jsonify({
                 'error': False,
@@ -201,7 +201,7 @@ def admin_list():
         casting.collection_to_df(db.table(name)) for name in collection_names
     ]
 
-    print(collection_dfs)
+    # print(collection_dfs)
 
     collections = [
         {
