@@ -19,15 +19,13 @@ def cli(ctx, webmushra_path, db_path):
 @cli.command()
 @click.option('--port', '-p', default=5000)
 @click.option('--admin-allow', '-a', default=["127.0.0.1"], multiple=True, show_default=True)
-@click.option('--experiment_name', '-exp', default="baseline_vs_noisy", show_default=True, help='Choose between - baseline_vs_noisy and other_model_combinations')
 @click.pass_context
-def server(ctx, port, admin_allow, experiment_name):
+def server(ctx, port, admin_allow):
     service.app.config['webmushra_dir'] = os.path.join(
         os.getcwd(), ctx.obj['webmushra_path']
     )
 
     service.app.config['admin_allowlist'] = admin_allow
-    service.app.config['experiment_name'] = experiment_name
 
     with TinyDB(ctx.obj['db_path']) as service.app.config['db']:
         service.app.run(debug=True, host='0.0.0.0', port=port)
