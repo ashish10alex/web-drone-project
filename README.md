@@ -34,7 +34,7 @@ Key Experiment details -
 Please skip to bullet point 2 as I have aleady generated these meta data files. 
 
 
-1. <b> Meta data Genration </b> - 
+<h3>1.  Meta data Genration </h3> 
     If you want to generate your own meta data you will need to change paths accordingly. The current paths are based on paths from Jade and my personal PC
 
     `meta_data.ipynb` - Generate CSV paths for audio files for various SNRs and mdoels
@@ -47,7 +47,7 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
 
     
         
-2. <b>Run the server locally </b> - 
+<h3>2. Run the server locally </h3> 
 
     ```
     git clone https://github.com/ashish10alex/web-drone-project.git
@@ -60,7 +60,7 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
     ```
     Then open `http://localhost:5000`
 
-3. <b> Database </b> - 
+<h3>3.  Database </h3>
 
 * But the main database which we will use for evaulating results is in the root of the repository -  `database_baseline_vs_noisy.csv` and `database_other_model_combinations.csv`
 
@@ -69,6 +69,9 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
  
 
 *  To see all the results for both sets of experiments go to -  `http://localhost:5000/admin` and click on `preview`
+
+<h2>4.  Monitor Experiments </h2>
+* You can monitor the finished and remaining experiments at - `http://localhost:5000/finished`
 
 
 
