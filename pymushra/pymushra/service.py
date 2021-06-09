@@ -143,7 +143,7 @@ def collect(testid=''):
                 denoised_2.append(
                      payload['trials'][0]['responses'][i]['denoised_2'])
                 snrs.append(
-                     payload['trials'][0]['responses'][i]['snr'])
+                     payload['trials'][0]['responses'][i]['snr'].split('/')[6])
                 preffered_utterance.append(
                      payload['trials'][0]['responses'][i]['preffered_utterance'])
                 time.append(
