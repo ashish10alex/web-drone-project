@@ -250,6 +250,7 @@ will be prosecuted to the maximum extent possible under law.
   <script>
 
 let configFile_ = {{ conf_file_path | tojson}}
+    console.log(configFile_)
     
    YAML.load(configFile = configFile_, (function (result) {
       config = result;

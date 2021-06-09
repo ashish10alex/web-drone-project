@@ -27,6 +27,14 @@ input[type=number] {
   background-color: #ED8C01; /* NOTE Background-color between handles alabs-orange */
 }
 
+#grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3em;
+  text-align: center;
+}
+
 body {
   font-family: sans-serif,verdana,Helvetica,Arial;
   text-align:center;
