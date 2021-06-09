@@ -369,6 +369,6 @@ PairedComparisonPage.prototype.store = function () {
   if (this.choice === "a"){choice.preffered_utterance= this.condition1.filepath.split('/')[lastIndexCondition1]}
   else{choice.preffered_utterance= this.condition2.filepath.split('/')[lastIndexCondition2]}
 
-  choice.time = Date();
+  choice.time = new Date().toLocaleDateString();
   trial.responses[trial.responses.length] = choice;
 };
