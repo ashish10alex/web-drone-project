@@ -70,7 +70,9 @@ Please skip to bullet point 2 as I have aleady generated these meta data files.
 
 *  To see all the results for both sets of experiments go to -  `http://localhost:5000/admin` and click on `preview`
 
+
 <h2>4.  Monitor Experiments </h2>
+
 * You can monitor the finished and remaining experiments at - `http://localhost:5000/finished`
 
 
