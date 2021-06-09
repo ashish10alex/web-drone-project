@@ -1,16 +1,12 @@
 bufferSize: 2048
 pages:
-- content: test description AB
-  enableLooping: false
-  id: trialAB2
-  name: null
-  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_SX49.WAV.n122.wav
-  showWaveform: true
-  stimuli:
-    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-10dB/data/DPTNet_SX49.WAV.n122.wav
-    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-10dB/data/WaveUNet_SX49.WAV.n122.wav
-  type: paired_comparison
-  unforced: null
+- content: <b>Welcome to AB testing framework for DRONE ego noise ehancement. You
+    will be presented a reference audio clip and denoised audio clip from two separate
+    algorithms. You will be required to select one of the two clips which sounds the
+    closest to the reference audio clip. </b>
+  id: first_page
+  name: Welcome
+  type: generic
 - content: test description AB
   enableLooping: false
   id: trialAB2
