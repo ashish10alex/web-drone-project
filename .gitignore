@@ -134,3 +134,6 @@ webmushra/configs/resources/Drone_Noise_Test_Data
 #jupyter
 share/
 webmushra_
+
+# private stuff
+admin_ips.txt
