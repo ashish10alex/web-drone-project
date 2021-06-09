@@ -1,13 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-    {% if seen_yamls|length > 0 %} 
-    <h2>Experiments are finished for following yaml files</h2>
-    <ol>
-    {% for file  in seen_yamls %}
-    <li> {{ file }} </li>
-    {% endfor %}
-    </ol>
-    {% else %}
-    <h2> None of the Experiments have finished for - {{ experiment_name }} </h2>
-    {% endif %}
+
+{% if baseline_done_files %}
+<h3> Baseline experiments done </h3>
+<ol>
+    {% for done in baseline_done_files %}
+    <li> {{done}} </li>
+    {%endfor%}
+</ol>
+{% endif %}
+
+{% if baseline_left_files %}
+<h3> Baseline experiments left </h3>
+<ol>
+    {% for left in baseline_left_files %}
+    <li> {{left}} </li>
+    {%endfor%}
+</ol>
+{% endif %}
+
+
+<br>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br>
+
+{% if others_done_files %}
+<h3> Other experiments done </h3>
+<ol>
+    {% for done in others_done_files %}
+    <li> {{done}} </li>
+    {%endfor%}
+</ol>
+{% endif %}
+
+{% if others_left_files %}
+<h3> Other experiments left </h3>
+<ol>
+    {% for left in others_left_files %}
+    <li> {{left}} </li>
+    {%endfor%}
+</ol>
+{% endif %}
+
 {% endblock %}

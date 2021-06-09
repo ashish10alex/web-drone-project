@@ -67,26 +67,22 @@ def home(url='index.html'):
         conf_files, seen_files = select_unique_yaml_files(experiment_name=exp_name, csv_database=db_name)
         all_conf_files += conf_files
         all_seen_files += seen_files
-    # print('all_conf_files', all_conf_files)
-    # print('all_seen_files', all_seen_files)
-
     if len(all_conf_files) == 0: return  render_template('finished.html', seen_files=all_seen_files)
 
     # select a random config file which has not yet been done so far 
     conf_file = all_conf_files[random.randint(0, len(all_conf_files)-1)]
-    # print(conf_file)
     if conf_file.split('_')[0] == 'baseline':
         conf_file_path = f'static/yamls/{experiment_names[0]}/{conf_file}'
         return render_template(url, conf_file_path=conf_file_path)
     conf_file_path = f'static/yamls/{experiment_names[1]}/{conf_file}'
     return render_template(url, conf_file_path=conf_file_path)
 
-# @app.route('/finished')
-# @only_admin_allowlist
-# def finishedExperiments():
-#     csv_database = f'database_{experiment_name}.csv'
-#     seen_yamls = get_seen_yaml_files(csv_database) 
-#     return render_template('finished.html', seen_yamls=seen_yamls, experiment_name=experiment_name)
+@app.route('/finished')
+@only_admin_allowlist
+def finishedExperiments():
+    baseline_left_files, baseline_done_files = select_unique_yaml_files(experiment_name='baseline_vs_noisy', csv_database=f'database_{experiment_names[0]}.csv')
+    others_left_files, others_done_files = select_unique_yaml_files(experiment_name='other_model_combinations', csv_database=f'database_{experiment_names[1]}.csv')
+    return render_template('finished.html', baseline_left_files=baseline_left_files, baseline_done_files=baseline_done_files, others_left_files=others_left_files, others_done_files=others_done_files)
 
 @app.route('/results', methods=['GET', 'POST'])
 @only_admin_allowlist
