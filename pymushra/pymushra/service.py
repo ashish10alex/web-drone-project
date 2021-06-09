@@ -1,6 +1,7 @@
 from __future__ import division, absolute_import, print_function
 
 import os
+import sys
 import json
 import pickle
 import pandas as pd
@@ -43,9 +44,13 @@ def select_unique_yaml_files(experiment_name, csv_database):
 
     #get seen files and remove them off the the list off all files
     seen_files = get_seen_yaml_files(csv_database)
+
     for file in seen_files:
-        all_files.remove(file)
+        if file in all_files:
+            all_files.remove(file)
+
         return all_files, seen_files
+
     seen_files = []
     return all_files, seen_files
 
@@ -60,7 +65,7 @@ def home(url='index.html'):
 
     #New version
     # experiment_name = app.config['experiment_name']
-    
+ 
     all_conf_files = []
     all_seen_files = []
     for exp_name, db_name in zip(experiment_names, database_names):
