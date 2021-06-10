@@ -183,7 +183,8 @@ function startup(config) {
     console.log("webMUSHRA: Could not set channel count of destination node.");
     console.log(e);
   }
-  audioContext.volume = 1.0;
+  // Control volume of output audio in experiment
+  audioContext.volume =10.0;
 
   audioFileLoader = new AudioFileLoader(audioContext, errorHandler);
   mushraValidator = new MushraValidator(errorHandler);
