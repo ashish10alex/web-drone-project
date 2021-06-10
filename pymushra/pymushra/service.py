@@ -114,12 +114,19 @@ def collect(testid=''):
         try:
             db = app.config['db']
             payload = json.loads(request.form['sessionJSON'])
+            print(payload)
             payload = casting.cast_recursively(payload)
             insert = casting.json_to_dict(payload)
 
             #add db here
 
             columns = [k for k in payload['trials'][0]['responses'][0].keys()]
+            #contains attributes - ['name', 'email', 'age', 'gender', 'subject_eval_ever']
+            for i in payload['participant']['name']:
+                columns.append(i)
+            participant_metadata = payload['participant']['response']
+
+
             columns.append('uuid')
             columns.append('configs')
             
@@ -138,9 +145,20 @@ def collect(testid=''):
             snrs = []
             time = []
             configs = []
+            # participant metadata
+            name = []
+            email = []
+            age = []
+            gender = []
+            subjective_eval_ever = []
             for i in range(len(payload['trials'][0]['responses'])):
                 uuids.append(uuid)
                 configs.append(config)
+                name.append(participant_metadata[0])
+                email.append(participant_metadata[1])
+                age.append(participant_metadata[2])
+                gender.append(participant_metadata[3])
+                subjective_eval_ever.append(participant_metadata[4])
                 clean_references.append(
                       payload['trials'][0]['responses'][i]['clean_reference'])
                 denoised_1.append(
@@ -163,6 +181,11 @@ def collect(testid=''):
             df['time'] = pd.Series(time)
             df['configs'] = pd.Series(configs)
             df['snr'] = pd.Series(snrs)
+            df['name'] = pd.Series(name)
+            df['email'] = pd.Series(email)
+            df['age'] = pd.Series(age)
+            df['gender'] = pd.Series(gender)
+            df['subjective_eval_ever'] = pd.Series(subjective_eval_ever)
             
             if csv_database in os.listdir():
                 df_og = pd.read_csv(csv_database, index_col=False)
@@ -193,7 +216,6 @@ def collect(testid=''):
 @only_admin_allowlist
 def admin_list():
 
-    # import pdb; pdb.set_trace();
     db = app.config['db']
     collection_names = db.tables()
 
@@ -215,7 +237,6 @@ def admin_list():
 #     configs = utils.get_configs(
 #         os.path.join(app.config['webmushra_dir'], "configs")
 #     )
-#     # import pdb; pdb.set_trace();
 
     return render_template(
         "admin/list.html",
