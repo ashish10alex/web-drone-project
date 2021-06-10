@@ -158,6 +158,8 @@ will be prosecuted to the maximum extent possible under law.
 
   <script src="{{ url_for('static', filename='misc/MushraValidator.js')}}"></script>
   <script src="{{ url_for('static', filename='misc/WaveformVisualizer.js')}}"></script>
+  <script src="{{ url_for('static', filename='misc/FilePlayer.js')}}"></script>
+  <script src="{{ url_for('static', filename='misc/LikertScale.js')}}"></script>
 
 
   <script src="{{ url_for('static', filename='misc/Localizer.js')}}"></script>
@@ -250,6 +252,7 @@ will be prosecuted to the maximum extent possible under law.
   <script>
 
 let configFile_ = {{ conf_file_path | tojson}}
+    //configFile_='static/yamls/baseline_vs_noisy/baseline_idx0_20.yaml'
     console.log(configFile_)
     
    YAML.load(configFile = configFile_, (function (result) {
