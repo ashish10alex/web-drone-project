@@ -38,7 +38,7 @@ PageTemplateRenderer.prototype.renderProgressBar = function(_parentId) {
                 .setMax(100)
                 .setStartFrom(0)
                 .setInterval(0)
-                .showCounter(false)
+                .showCounter(true)
                 .build();      
 };
 
