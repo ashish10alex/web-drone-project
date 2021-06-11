@@ -22,10 +22,17 @@ except ImportError:
 app = Flask(__name__)
 os.makedirs('db', exist_ok=True)
 
+
+def get_user_ip():
+    headers_list = request.headers.getlist("X-Forwarded-For")
+    user_ip = headers_list[0] if headers_list else request.remote_addr
+    return user_ip
+
 def only_admin_allowlist(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
-        if request.remote_addr in app.config['admin_allowlist']:
+        print(get_user_ip(), file=sys.stderr)
+        if get_user_ip() in app.config['admin_allowlist']:
             return f(*args, **kwargs)
         else:
             return abort(403)
@@ -49,9 +56,6 @@ def select_unique_yaml_files(experiment_name, csv_database):
         if file in all_files:
             all_files.remove(file)
 
-        return all_files, seen_files
-
-    seen_files = []
     return all_files, seen_files
 
 experiment_names = ['baseline_vs_noisy', 'other_model_combinations']
@@ -120,12 +124,11 @@ def collect(testid=''):
 
             #add db here
 
-            columns = [k for k in payload['trials'][0]['responses'][0].keys()]
+            columns = [k for k in payload['trials'][0]['responses'][0].keys()] + ['ip']
             #contains attributes - ['name', 'email', 'age', 'gender', 'subject_eval_ever']
             for i in payload['participant']['name']:
                 columns.append(i)
             participant_metadata = payload['participant']['response']
-
 
             columns.append('uuid')
             columns.append('configs')
@@ -138,6 +141,7 @@ def collect(testid=''):
             else: csv_database = f'database_{experiment_names[1]}.csv'
             
             uuids = []
+            ips = []
             clean_references = []
             denoised_1 = []
             denoised_2 = []
@@ -153,6 +157,7 @@ def collect(testid=''):
             subjective_eval_ever = []
             for i in range(len(payload['trials'][0]['responses'])):
                 uuids.append(uuid)
+                ips.append(get_user_ip())
                 configs.append(config)
                 name.append(participant_metadata[0])
                 email.append(participant_metadata[1])
@@ -178,6 +183,7 @@ def collect(testid=''):
             df['denoised_2'] = pd.Series(denoised_2)
             df['preffered_utterance'] = pd.Series(preffered_utterance)
             df['uuid'] = pd.Series(uuids)
+            df['ip'] = pd.Series(ips)
             df['time'] = pd.Series(time)
             df['configs'] = pd.Series(configs)
             df['snr'] = pd.Series(snrs)

@@ -30,6 +30,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+etc/
 lib64
 lib64/
 parts/
@@ -137,3 +138,7 @@ webmushra_
 
 # private stuff
 admin_ips.txt
+
+# database
+database_baseline_vs_noisy.csv
+database_other_model_combinations.csv
