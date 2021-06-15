@@ -394,7 +394,7 @@ MushraAudioControl.prototype.getNumSamples = function() {
 };
 
 
-
+let prev = ''
 MushraAudioControl.prototype.play = function(_stimulus, _isReference) {
   if (_stimulus === null) {
     _stimulus = this.audioStimulus;
@@ -405,7 +405,11 @@ MushraAudioControl.prototype.play = function(_stimulus, _isReference) {
   } else {
     this.audioStimulus = _stimulus;
     if (this.audioPlaying === false) {      
+        if( prev !== this.audioStimulus.id){
+            this.audioCurrentPosition = 0;
+        }
       this.fadeIn(_stimulus);
+    prev = this.audioStimulus.id
     }          
   }    
   this.audioPlaying = true;  
