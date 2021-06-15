@@ -48,6 +48,8 @@ function WaveformVisualizer(_variableName, _parent, _stimulus, _showWaveform, _e
     this.numberEventListener = this.mushraAudioControl.addEventListener((function (_event) {
         console.log('this.numberEventListener')
       if (_event.name == 'processUpdate') {
+          // debugger;
+          // console.log(`this.mushraAudioControl.audioStimulus.id: ${this.mushraAudioControl.audioStimulus.id}`)
         this.setCurrentPosition(_event.currentSample);
       }  
     
@@ -262,8 +264,8 @@ WaveformVisualizer.prototype.draw = function(){
         }else{
             this.currentPosition = 0;
             this.show()
-        }
     }
+}
 }
 
 WaveformVisualizer.prototype.show = function(){
@@ -276,7 +278,6 @@ WaveformVisualizer.prototype.show = function(){
           
           var selected = this.leftRegionPosition > 0 || this.rightRegionPosition < this.resampledSamples.length;
 
-    console.log(`this.currentPosition: ${this.currentPosition}`)
           var state = 0;         
           this.context.beginPath();
           if (selected) {
