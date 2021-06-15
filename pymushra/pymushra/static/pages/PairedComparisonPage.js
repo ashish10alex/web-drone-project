@@ -104,24 +104,45 @@ PairedComparisonPage.prototype.render = function (_parent) {
 
   var trLoop = $("<tr id='trWs'></tr>");
   table.append(trLoop);
-
-  var tdLoop1 = $(" \
-    <td class='stopButton'> \
-      <button data-role='button' data-inline='true' id='buttonStop' class='center' onclick='"+ this.pageManager.getPageVariableName(this) + ".mushraAudioControl.stop();'>" + this.pageManager.getLocalizer().getFragment(this.language, 'stopButton') + "</button> \
-    </td> \
-  ");
-  trLoop.append(tdLoop1);
-
   var waveform = $("<td></td>");
   trLoop.append(waveform);
-
-
-  this.waveformVisualizer = new WaveformVisualizer(this.pageManager.getPageVariableName(this) + ".waveformVisualizer", waveform, this.reference, this.pageConfig.showWaveform, this.pageConfig.enableLooping, this.mushraAudioControl);
+  this.waveformVisualizerRef = new WaveformVisualizer(this.pageManager.getPageVariableName(this) + ".waveformVisualizerRef", waveform, this.reference, this.pageConfig.showWaveform, this.pageConfig.enableLooping, this.mushraAudioControl);
   // This is only called once while creation of the page
-  this.waveformVisualizer.create();
+  this.waveformVisualizerRef.create();
   // Load seems to do some css stuff which doesnt seem to have much of an effect on visuals
-  this.waveformVisualizer.load();
-  
+  this.waveformVisualizerRef.load();
+  table.append(trLoop);
+  trLoop.append(waveform);
+    var buttonPlayReference = $("<td style='padding: 12px'> <div>Reference </div> <button data-theme='a' id='buttonReference' data-role='button' class='audioControlElement' onclick='" + this.pageManager.getPageVariableName(this) + ".btnCallbackReference()' style='margin : 0 auto; '>" + this.pageManager.getLocalizer().getFragment(this.language, 'playButton') + "</button> </td>");
+  trLoop.append(buttonPlayReference);
+
+  var trLoop = $("<tr id='trWs'></tr>");
+  table.append(trLoop);
+  var waveform = $("<td></td>");
+  trLoop.append(waveform);
+  this.waveformVisualizerCond1 = new WaveformVisualizer(this.pageManager.getPageVariableName(this) + ".waveformVisualizerCond1", waveform, this.condition1, this.pageConfig.showWaveform, this.pageConfig.enableLooping, this.mushraAudioControl);
+  // This is only called once while creation of the page
+  this.waveformVisualizerCond1.create();
+  // Load seems to do some css stuff which doesnt seem to have much of an effect on visuals
+  this.waveformVisualizerCond1.load();
+  table.append(trLoop);
+  trLoop.append(waveform);
+    var buttonPlayA = $("<td><div>A </div><button data-theme='a' id='buttonConditions0' data-role='button' class='audioControlElement' onclick='" + this.pageManager.getPageVariableName(this) + ".btnCallbackA()' style='margin : 0 auto;'>" + this.pageManager.getLocalizer().getFragment(this.language, 'playButton') + "</button></td>");
+  trLoop.append(buttonPlayA);
+
+  var trLoop = $("<tr id='trWs'></tr>");
+  table.append(trLoop);
+  var waveform = $("<td></td>");
+  trLoop.append(waveform);
+  this.waveformVisualizerCond2 = new WaveformVisualizer(this.pageManager.getPageVariableName(this) + ".waveformVisualizerCond2", waveform, this.condition2, this.pageConfig.showWaveform, this.pageConfig.enableLooping, this.mushraAudioControl);
+  // This is only called once while creation of the page
+  this.waveformVisualizerCond2.create();
+  // Load seems to do some css stuff which doesnt seem to have much of an effect on visuals
+  this.waveformVisualizerCond2.load();
+  table.append(trLoop);
+  trLoop.append(waveform);
+    var buttonPlayB = $("<td> <div>B </div><button data-theme='a' id='buttonConditions1' data-role='button' class='audioControlElement' onclick='" + this.pageManager.getPageVariableName(this) + ".btnCallbackB()' style='margin : 0 auto;'>" + this.pageManager.getLocalizer().getFragment(this.language, 'playButton') + "</button></td>");
+  trLoop.append(buttonPlayB);
   
   var trAB = $("<tr></tr>");
   table.append(trAB);
@@ -131,21 +152,6 @@ PairedComparisonPage.prototype.render = function (_parent) {
   var tableAB = $("<table id='table_ab' class='center'></table>");
   tdAB.append(tableAB);
 
-  // names
-  var trNames = $("<tr><td style='text-align: left;'>" + this.pageManager.getLocalizer().getFragment(this.language, 'reference') + "</td><td>A</td><td>B</td></tr>");
-  tableAB.append(trNames);
-
-
-  var trPlays = $("<tr></tr>");
-  tableAB.append(trPlays);
-  var buttonPlayReference = $("<td><button data-theme='a' id='buttonReference' data-role='button' class='audioControlElement' onclick='" + this.pageManager.getPageVariableName(this) + ".btnCallbackReference()' style='margin : 0 auto;'>" + this.pageManager.getLocalizer().getFragment(this.language, 'playButton') + "</button></td>");
-  trPlays.append(buttonPlayReference);
-
-  var buttonPlayA = $("<td><button data-theme='a' id='buttonConditions0' data-role='button' class='audioControlElement' onclick='" + this.pageManager.getPageVariableName(this) + ".btnCallbackA()' style='margin : 0 auto;'>" + this.pageManager.getLocalizer().getFragment(this.language, 'playButton') + "</button></td>");
-  trPlays.append(buttonPlayA);
-  var buttonPlayB = $("<td><button data-theme='a' id='buttonConditions1' data-role='button' class='audioControlElement' onclick='" + this.pageManager.getPageVariableName(this) + ".btnCallbackB()' style='margin : 0 auto;'>" + this.pageManager.getLocalizer().getFragment(this.language, 'playButton') + "</button></td>");
-  trPlays.append(buttonPlayB);
-  
   var trQuestion = $("<tr><td  colspan='3'><br/><br/>" + this.pageManager.getLocalizer().getFragment(this.language, 'quest') + "</td></tr>");
   tableAB.append(trQuestion);
 
@@ -332,15 +338,17 @@ PairedComparisonPage.prototype.load = function () {
 PairedComparisonPage.prototype.save = function () {
   this.macic.unbind(); 
   this.time += 	(new Date() - this.startTimeOnPage);
-	this.mushraAudioControl.removeEventListener(this.waveformVisualizer.numberEventListener);
+	this.mushraAudioControl.removeEventListener(this.waveformVisualizerRef.numberEventListener);
+	this.mushraAudioControl.removeEventListener(this.waveformVisualizerCond1.numberEventListener);
+	this.mushraAudioControl.removeEventListener(this.waveformVisualizerCond2.numberEventListener);
   // audio
   this.mushraAudioControl.freeAudio();
   // choice
   var radio = $('#radio-choice :radio:checked');
   this.choice = (radio.length > 0) ? radio[0].value : null;
   //loop
-  this.loop.start = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopStart);
-  this.loop.end = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopEnd);
+  this.loop.start = parseInt(this.waveformVisualizerRef.mushraAudioControl.audioLoopStart);
+  this.loop.end = parseInt(this.waveformVisualizerRef.mushraAudioControl.audioLoopEnd);
 };
 
 
