@@ -251,6 +251,7 @@ will be prosecuted to the maximum extent possible under law.
   <script src="{{ url_for('static', filename='startup.js')}}"></script>
   <script>
     let configFile_ = {{ conf_file_path | tojson}}    
+    configFile_ = 'static/yamls/baseline_vs_noisy/idx_0_40.yaml'
     YAML.load(configFile = configFile_, (function (result) {
         config = result;
         startup(result);
