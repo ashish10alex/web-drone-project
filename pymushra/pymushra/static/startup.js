@@ -184,7 +184,7 @@ function startup(config) {
     console.log(e);
   }
   // Control volume of output audio in experiment
-  audioContext.volume =10.0;
+  audioContext.volume =1.0;
 
   audioFileLoader = new AudioFileLoader(audioContext, errorHandler);
   mushraValidator = new MushraValidator(errorHandler);
