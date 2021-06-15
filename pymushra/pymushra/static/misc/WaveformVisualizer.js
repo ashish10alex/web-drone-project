@@ -47,6 +47,8 @@ function WaveformVisualizer(_variableName, _parent, _stimulus, _showWaveform, _e
   
     this.numberEventListener = this.mushraAudioControl.addEventListener((function (_event) {
       if (_event.name == 'processUpdate') {
+          // debugger;
+          // console.log(`this.mushraAudioControl.audioStimulus.id: ${this.mushraAudioControl.audioStimulus.id}`)
         this.setCurrentPosition(_event.currentSample);
       }  
     
@@ -242,73 +244,82 @@ WaveformVisualizer.prototype.create = function(){
 };
 
 WaveformVisualizer.prototype.draw = function(){
-  /// this.stimulus.id seems to be the same while playing reference and sources. 
-
-  this.context.clearRect ( 0 , 0 , this.canvas.width, this.canvas.height );
-
-  this.context.translate(0, this.canvas.height/2);
-  
-  // a of rgba controls the transperecny 
-  this.context.fillStyle= 'rgba(0, 0, 0, 0.1)';
-  this.context.fillRect(this.leftRegionPosition, -1 * this.canvas.height/2, (this.rightRegionPosition - this.leftRegionPosition), 2 * this.canvas.height);
-  
-  var selected = this.leftRegionPosition > 0 || this.rightRegionPosition < this.resampledSamples.length;
-
-  var state = 0;         
-  this.context.beginPath();
-  if (selected) {
-    this.context.strokeStyle = '#808080';
-  } else if(this.currentPosition != 0) {
-    state = 0;
-  }else {
-    this.context.strokeStyle = '#0033cc';
-    state = 1;
-  }
-  
-  for(var j = 0; j < this.resampledSamples.length; j++) {
-
-    if(state == 0 && j >= this.leftRegionPosition){
-      // state 1 before current position
-      //defines the color of the waveform post playing
-      this.context.stroke();
-      this.context.beginPath();
-
-      var labelRef = $("#buttonReference").text()
-      var labelCond0 = $("#buttonConditions0").text()
-      var labelCond1 = $("#buttonConditions1").text()
-
-      if (labelRef == "Pause") {this.context.strokeStyle = '#c65353'}
-      else if (labelCond0 == "Pause") {this.context.strokeStyle = '#4d79ff'}
-      else if (labelCond1 == "Pause") {this.context.strokeStyle = '#669999'}
-      else {this.context.strokeStyle = '#c65353'};
-
-      state = 1;      
-    }else if(state == 1 && j > this.currentPosition){
-      // after current position
-      // Color before playing - lighter than color when playing
-      this.context.stroke();
-      this.context.beginPath();
-      this.context.strokeStyle = '#F8DEBD';
-      state = 2;
-    }else if(state == 2 && j > this.rightRegionPosition){
-      this.context.stroke();
-      this.context.beginPath();
-      this.context.strokeStyle = '#808080';
-      state = 3;     
+    // console.log(`this.stimulus.id: ${this.stimulus.id}`)
+    if (this.mushraAudioControl.audioStimulus === null){
+        this.show()
     }
-    
-    this.context.moveTo(j, -1 * this.resampledSamples[j] * this.scaledToHeight/2); //this.canvas.height/2
-    this.context.lineTo(j,this.resampledSamples[j] * this.scaledToHeight/2);
- 
-  }
-  
-  this.context.stroke();
-  this.context.translate(0, -this.canvas.height/2); 
+    if (this.mushraAudioControl.audioStimulus){
+    // console.log(`this.mushraAudioControl.audioStimulus: ${this.mushraAudioControl.audioStimulus.id}`)
+        if (this.stimulus.id === this.mushraAudioControl.audioStimulus.id){
+            this.show()
+        }else{
+        }
+    }
+}
+
+WaveformVisualizer.prototype.show = function(){
+          this.context.clearRect ( 0 , 0 , this.canvas.width, this.canvas.height );
+          this.context.translate(0, this.canvas.height/2);
+          
+          // a of rgba controls the transperecny 
+          this.context.fillStyle= 'rgba(0, 0, 0, 0.1)';
+          this.context.fillRect(this.leftRegionPosition, -1 * this.canvas.height/2, (this.rightRegionPosition - this.leftRegionPosition), 2 * this.canvas.height);
+          
+          var selected = this.leftRegionPosition > 0 || this.rightRegionPosition < this.resampledSamples.length;
+
+          var state = 0;         
+          this.context.beginPath();
+          if (selected) {
+            this.context.strokeStyle = '#808080';
+          } else if(this.currentPosition != 0) {
+            state = 0;
+          }else {
+            this.context.strokeStyle = '#0033cc';
+            state = 1;
+          }
+          
+          for(var j = 0; j < this.resampledSamples.length; j++) {
+
+            if(state == 0 && j >= this.leftRegionPosition){
+              // state 1 before current position
+              //defines the color of the waveform post playing
+              this.context.stroke();
+              this.context.beginPath();
+
+              var labelRef = $("#buttonReference").text()
+              var labelCond0 = $("#buttonConditions0").text()
+              var labelCond1 = $("#buttonConditions1").text()
+
+              if (labelRef == "Pause") {this.context.strokeStyle = '#c65353'}
+              else if (labelCond0 == "Pause") {this.context.strokeStyle = '#4d79ff'}
+              else if (labelCond1 == "Pause") {this.context.strokeStyle = '#669999'}
+              else {this.context.strokeStyle = '#c65353'};
+
+              state = 1;      
+            }else if(state == 1 && j > this.currentPosition){
+              // after current position
+              // Color before playing - lighter than color when playing
+              this.context.stroke();
+              this.context.beginPath();
+              this.context.strokeStyle = '#F8DEBD';
+              state = 2;
+            }else if(state == 2 && j > this.rightRegionPosition){
+              this.context.stroke();
+              this.context.beginPath();
+              this.context.strokeStyle = '#808080';
+              state = 3;     
+            }
+            
+            this.context.moveTo(j, -1 * this.resampledSamples[j] * this.scaledToHeight/2); //this.canvas.height/2
+            this.context.lineTo(j,this.resampledSamples[j] * this.scaledToHeight/2);
+         
+          }
+          
+          this.context.stroke();
+          this.context.translate(0, -this.canvas.height/2); 
 };
 
-
 WaveformVisualizer.prototype.refresh = function(){
-  
   this.draw();
 };
 
