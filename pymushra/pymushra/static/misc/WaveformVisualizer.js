@@ -46,9 +46,8 @@ function WaveformVisualizer(_variableName, _parent, _stimulus, _showWaveform, _e
   this.rightRegionPosition = this.resampledSamples.length; // samples
   
     this.numberEventListener = this.mushraAudioControl.addEventListener((function (_event) {
+        console.log('this.numberEventListener')
       if (_event.name == 'processUpdate') {
-          // debugger;
-          // console.log(`this.mushraAudioControl.audioStimulus.id: ${this.mushraAudioControl.audioStimulus.id}`)
         this.setCurrentPosition(_event.currentSample);
       }  
     
@@ -194,7 +193,7 @@ WaveformVisualizer.prototype.renderTable = function() {
 
 
 };
-
+let temp_stimulus_id = ''
 WaveformVisualizer.prototype.create = function(){
   if(this.enableLooping){
     this.renderTable();
@@ -218,7 +217,10 @@ WaveformVisualizer.prototype.create = function(){
   this.regionWidth = this.canvas.offsetWidth; // pixel
   
   this.canvas.addEventListener('click', (function(event){
-    
+    // console.log(`this.stimulus.id click: ${this.stimulus.id}`)
+   // debugger; 
+    temp_stimulus_id = this.stimulus.id
+      // console.log(`temp_stimulus_id: ${temp_stimulus_id}`)
     if(event.x != undefined){
       var newRegion = this.calculateRegion(event.x);
     }else{ // for Firefox
@@ -240,19 +242,26 @@ WaveformVisualizer.prototype.create = function(){
   }).bind(this));
    
   this.refresh();
-
 };
 
 WaveformVisualizer.prototype.draw = function(){
+    // console.log(`this.currentPosition: ${this.currentPosition}`)
     // console.log(`this.stimulus.id: ${this.stimulus.id}`)
     if (this.mushraAudioControl.audioStimulus === null){
-        this.show()
+        if (this.stimulus.id == temp_stimulus_id){
+            this.show();
+        }else{
+            this.currentPosition = 0;
+            this.show();
+        }
     }
     if (this.mushraAudioControl.audioStimulus){
     // console.log(`this.mushraAudioControl.audioStimulus: ${this.mushraAudioControl.audioStimulus.id}`)
-        if (this.stimulus.id === this.mushraAudioControl.audioStimulus.id){
+        if (this.stimulus.id === this.mushraAudioControl.audioStimulus.id  ){
             this.show()
         }else{
+            this.currentPosition = 0;
+            this.show()
         }
     }
 }
@@ -267,6 +276,7 @@ WaveformVisualizer.prototype.show = function(){
           
           var selected = this.leftRegionPosition > 0 || this.rightRegionPosition < this.resampledSamples.length;
 
+    console.log(`this.currentPosition: ${this.currentPosition}`)
           var state = 0;         
           this.context.beginPath();
           if (selected) {
