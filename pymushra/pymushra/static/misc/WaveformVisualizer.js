@@ -46,7 +46,6 @@ function WaveformVisualizer(_variableName, _parent, _stimulus, _showWaveform, _e
   this.rightRegionPosition = this.resampledSamples.length; // samples
   
     this.numberEventListener = this.mushraAudioControl.addEventListener((function (_event) {
-        console.log('this.numberEventListener')
       if (_event.name == 'processUpdate') {
           // debugger;
           // console.log(`this.mushraAudioControl.audioStimulus.id: ${this.mushraAudioControl.audioStimulus.id}`)

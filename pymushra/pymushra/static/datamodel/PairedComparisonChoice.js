@@ -21,4 +21,5 @@ function PairedComparisonChoiceNew() {
   this.preffered_utterance = null; 
   this.snr=null;
   this.time = null;
+  this.confidence = null;
 }
