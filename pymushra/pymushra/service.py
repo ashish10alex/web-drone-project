@@ -155,6 +155,7 @@ def collect(testid=''):
             age = []
             gender = []
             subjective_eval_ever = []
+            confidence = []
             for i in range(len(payload['trials'][0]['responses'])):
                 uuids.append(uuid)
                 ips.append(get_user_ip())
@@ -174,6 +175,8 @@ def collect(testid=''):
                      payload['trials'][0]['responses'][i]['snr'].split('/')[6])
                 preffered_utterance.append(
                      payload['trials'][0]['responses'][i]['preffered_utterance'])
+                confidence.append(
+                     payload['trials'][0]['responses'][i]['confidence'])
                 time.append(
                      payload['trials'][0]['responses'][i]['time'])
 
@@ -192,6 +195,7 @@ def collect(testid=''):
             df['age'] = pd.Series(age)
             df['gender'] = pd.Series(gender)
             df['subjective_eval_ever'] = pd.Series(subjective_eval_ever)
+            df['confidence'] = pd.Series(confidence)
             
             if csv_database in os.listdir():
                 df_og = pd.read_csv(csv_database, index_col=False)
