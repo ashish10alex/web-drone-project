@@ -195,23 +195,22 @@ PairedComparisonPage.prototype.showConfidenceOptions = function(table, pageTempl
 
       var trResponse_ = $("<tr></tr>");
       tableAB_.append(trResponse_);
-      var tdResponse_ = $("<td  colspan='3'></td>");
-      trResponse_.append(tdResponse_);
       
-      var radioChoice_ = $("<div id='radio-choice-confidence'>\
-        <input style='display:inline' type='radio' name='radio-choice-confidence'  value='low'>\
-        <label>Low</label>\
-        <input style='display:inline' type='radio' name='radio-choice-confidence'  value='medium'>\
-        <label>Medium</label>\
-        <input style='display:inline'type='radio' name='radio-choice-confidence'  value='high'>\
-        <label>High</label>\
-      </div>");
+      var radioChoice_ = $(" \
+     <td> <div  id='radio-choice-confidence' data-role='controlgroup' data-type='horizontal'> </div> </td>\
+        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='low'>\
+    <label>Low</label> </td>\
+        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='medium'>\
+        <label>Medium</label></td>\
+        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='high'>\
+        <label>High</label></td>\
+      ");
 
       if (this.pageConfig.unforced) {
         radioChoice_.append($("<input type='radio' name='radio-choice' id='radio-choice-n' value='n'><label for='radio-choice-n'>" + this.pageConfig.unforced + "</label>"));
       }
       
-      tdResponse_.append(radioChoice_);
+      trResponse_.append(radioChoice_);
       radioChoice_.find("input[type='radio']").bind("change", (function(){
         pageTemplateRenderer_.unlockNextButton();
 	}))
