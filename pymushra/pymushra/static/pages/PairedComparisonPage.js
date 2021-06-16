@@ -378,8 +378,8 @@ PairedComparisonPage.prototype.save = function () {
   var radio = $('#radio-choice :radio:checked');
   this.choice = (radio.length > 0) ? radio[0].value : null;
   //loop
-  this.loop.start = parseInt(this.waveformVisualizerRef.mushraAudioControl.audioLoopStart);
-  this.loop.end = parseInt(this.waveformVisualizerRef.mushraAudioControl.audioLoopEnd);
+  this.loop.start = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopStart);
+  this.loop.end = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopEnd);
 
 
   var radioConfidence = $('#radio-choice-confidence :radio:checked');
