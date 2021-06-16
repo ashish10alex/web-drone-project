@@ -197,14 +197,12 @@ PairedComparisonPage.prototype.showConfidenceOptions = function(table, pageTempl
       tableAB_.append(trResponse_);
       
       var radioChoice_ = $(" \
-        <div id='radio-choice-confidence'> \
-        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='low'>\
+        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio'  name='radio-choice-confidence'  value='low'>\
     <label>Low</label> </td>\
         <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='medium'>\
         <label>Medium</label></td>\
         <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='high'>\
         <label>High</label></td>\
-        </div>\
       ");
 
       if (this.pageConfig.unforced) {
@@ -381,9 +379,8 @@ PairedComparisonPage.prototype.save = function () {
   this.loop.start = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopStart);
   this.loop.end = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopEnd);
 
+  this.choiceConfidence = $("input[type='radio'][name='radio-choice-confidence']:checked").val();
 
-  var radioConfidence = $('#radio-choice-confidence :radio:checked');
-  this.choiceConfidence = (radioConfidence.length > 0) ? radioConfidence[0].value : null;
 };
 
 
