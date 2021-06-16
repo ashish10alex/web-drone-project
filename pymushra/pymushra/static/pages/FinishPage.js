@@ -78,7 +78,6 @@ FinishPage.prototype.render = function (_parent) {
       }else if (element.type === "long_text"){
         table.append($("<tr><td id='labeltd' style='vertical-align:top; padding-top:"+ $('#feedback').css('margin-top') +"'><strong>"+ element.label +"</strong></td><td><textarea name='"+element.name+"' id='"+element.name+"'></textarea></td></tr>"));      
       }
-      console.log(element);    
     }
     var button = $("<button id='send_results' data-role='button' data-inline='true' disabled='disabled'>" + this.pageManager.getLocalizer().getFragment(this.language, 'sendButton') +"</button>");
     button.bind( "click", (function(event, ui) {
