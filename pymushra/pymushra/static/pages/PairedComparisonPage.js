@@ -197,7 +197,6 @@ PairedComparisonPage.prototype.showConfidenceOptions = function(table, pageTempl
       tableAB_.append(trResponse_);
       
       var radioChoice_ = $(" \
-     <td> <div  id='radio-choice-confidence' data-role='controlgroup' data-type='horizontal'> </div> </td>\
         <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='low'>\
     <label>Low</label> </td>\
         <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='medium'>\
