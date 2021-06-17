@@ -166,54 +166,35 @@ PairedComparisonPage.prototype.render = function (_parent) {
   	radioChoice.append($("<input type='radio' name='radio-choice' id='radio-choice-n' value='n'><label for='radio-choice-n'>" + this.pageConfig.unforced + "</label>"));
   }
   tdResponse.append(radioChoice);
-  radioChoice.find("input[type='radio']").bind("change", (function(){
-      // Show confidence options with user has selected utturnace A/B
-      var confidenceOptionsdiv = document.getElementById('radio-choice-confidence')
-      if (confidenceOptionsdiv === null){
-          pageTemplateRenderer_ = this.pageTemplateRenderer
-          this.showConfidenceOptions(table, pageTemplateRenderer_)
-      }else{
+    
+  var trConfidenceQuestion = $("<tr style=><td  colspan='3'><br/><br/>How confident are you in your choice?</td></tr>").hide();
+  tableAB.append(trConfidenceQuestion);
 
-      }
-  }
-  ).bind(this));
+  var trConfidenceResponse = $("<tr></tr>").hide();
+  tableAB.append(trConfidenceResponse);
+  var tdConfidenceResponse = $("<td  colspan='3'></td>");
+  trConfidenceResponse.append(tdConfidenceResponse);
+    
+  confidenceChoices = [
+      {'value': 'low', 'label': 'Low'},
+      {'value': 'medium', 'label': 'Medium'},
+      {'value': 'high', 'label': 'High'},
+  ]
+  confidenceRadio = new LikertScale(confidenceChoices, 'confidence', true, (function(name) {
+      this.pageTemplateRenderer.unlockNextButton();
+  }).bind(this));
+  confidenceRadio.render(tdConfidenceResponse)
+  
+  radioChoice.find("input[type='radio']").bind("change", function(){
+      // Show confidence options with user has selected utturnace A/B
+      trConfidenceQuestion.show()
+      trConfidenceResponse.show()
+      confidenceRadio.enable()
+  });
 
   this.macic = new MushraAudioControlInputController(this.mushraAudioControl, this.pageConfig.enableLooping);
   this.macic.bind();
 };
-PairedComparisonPage.prototype.showConfidenceOptions = function(table, pageTemplateRenderer_){
-      var trAB_ = $("<tr></tr>");
-      table.append(trAB_);
-      var tdAB_ = $("<td id='td_AB' colspan='2'></td>");
-      trAB_.append(tdAB_);
-
-      var tableAB_ = $("<table id='table_ab' class='center'></table>");
-      tdAB_.append(tableAB_);
-      var trQuestion_ = $("<tr><td  colspan='3'><br/><br/>" + 'How confident are you in your choice ? '+ "</td></tr>");
-      tableAB_.append(trQuestion_);
-
-
-      var trResponse_ = $("<tr></tr>");
-      tableAB_.append(trResponse_);
-      
-      var radioChoice_ = $(" \
-        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio'  name='radio-choice-confidence'  value='low'>\
-    <label>Low</label> </td>\
-        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='medium'>\
-        <label>Medium</label></td>\
-        <td><input style=' border: 0px; width: 100%; height: 1.5em;'  type='radio' name='radio-choice-confidence'  value='high'>\
-        <label>High</label></td>\
-      ");
-
-      if (this.pageConfig.unforced) {
-        radioChoice_.append($("<input type='radio' name='radio-choice' id='radio-choice-n' value='n'><label for='radio-choice-n'>" + this.pageConfig.unforced + "</label>"));
-      }
-      
-      trResponse_.append(radioChoice_);
-      radioChoice_.find("input[type='radio']").bind("change", (function(){
-        pageTemplateRenderer_.unlockNextButton();
-	}))
-}
 
 PairedComparisonPage.prototype.setLoopStart = function() {
   var slider = document.getElementById('slider');
@@ -379,7 +360,7 @@ PairedComparisonPage.prototype.save = function () {
   this.loop.start = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopStart);
   this.loop.end = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopEnd);
 
-  this.choiceConfidence = $("input[type='radio'][name='radio-choice-confidence']:checked").val();
+  this.choiceConfidence = $("input[type='radio'][name='confidence_response']:checked").val();
 
 };
 
