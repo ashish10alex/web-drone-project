@@ -165,18 +165,36 @@ PairedComparisonPage.prototype.render = function (_parent) {
   if (this.pageConfig.unforced) {
   	radioChoice.append($("<input type='radio' name='radio-choice' id='radio-choice-n' value='n'><label for='radio-choice-n'>" + this.pageConfig.unforced + "</label>"));
   }
-  
-  radioChoice.find("input[type='radio']").bind("change", (function(){
-	this.pageTemplateRenderer.unlockNextButton();
-	}
-  ).bind(this));
-  
   tdResponse.append(radioChoice);
+    
+  var trConfidenceQuestion = $("<tr style=><td  colspan='3'><br/><br/>How confident are you in your choice?</td></tr>").hide();
+  tableAB.append(trConfidenceQuestion);
+
+  var trConfidenceResponse = $("<tr></tr>").hide();
+  tableAB.append(trConfidenceResponse);
+  var tdConfidenceResponse = $("<td  colspan='3'></td>");
+  trConfidenceResponse.append(tdConfidenceResponse);
+    
+  confidenceChoices = [
+      {'value': 'low', 'label': 'Low'},
+      {'value': 'medium', 'label': 'Medium'},
+      {'value': 'high', 'label': 'High'},
+  ]
+  confidenceRadio = new LikertScale(confidenceChoices, 'confidence', true, (function(name) {
+      this.pageTemplateRenderer.unlockNextButton();
+  }).bind(this));
+  confidenceRadio.render(tdConfidenceResponse)
   
+  radioChoice.find("input[type='radio']").bind("change", function(){
+      // Show confidence options with user has selected utturnace A/B
+      trConfidenceQuestion.show()
+      trConfidenceResponse.show()
+      confidenceRadio.enable()
+  });
+
   this.macic = new MushraAudioControlInputController(this.mushraAudioControl, this.pageConfig.enableLooping);
   this.macic.bind();
 };
-
 
 PairedComparisonPage.prototype.setLoopStart = function() {
   var slider = document.getElementById('slider');
@@ -341,6 +359,9 @@ PairedComparisonPage.prototype.save = function () {
   //loop
   this.loop.start = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopStart);
   this.loop.end = parseInt(this.waveformVisualizer.mushraAudioControl.audioLoopEnd);
+
+  this.choiceConfidence = $("input[type='radio'][name='confidence_response']:checked").val();
+
 };
 
 
@@ -368,6 +389,8 @@ PairedComparisonPage.prototype.store = function () {
 
   if (this.choice === "a"){choice.preffered_utterance= this.condition1.filepath.split('/')[lastIndexCondition1]}
   else{choice.preffered_utterance= this.condition2.filepath.split('/')[lastIndexCondition2]}
+
+    choice.confidence = this.choiceConfidence
 
   choice.time = new Date().toLocaleDateString();
   trial.responses[trial.responses.length] = choice;

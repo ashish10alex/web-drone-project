@@ -76,14 +76,16 @@ def home(url='index.html'):
         conf_files, seen_files = select_unique_yaml_files(experiment_name=exp_name, csv_database=db_name)
         all_conf_files += conf_files
         all_seen_files += seen_files
-    if len(all_conf_files) == 0: return  render_template('finished.html', seen_files=all_seen_files)
+    if len(all_conf_files) == 0:
+        render_template('finished.html', seen_files=all_seen_files)
 
     # select a random config file which has not yet been done so far 
     conf_file = all_conf_files[random.randint(0, len(all_conf_files)-1)]
+    print(conf_file, file=sys.stderr)
     if conf_file.split('_')[0] == 'baseline':
         conf_file_path = f'static/yamls/{experiment_names[0]}/{conf_file}'
-        return render_template(url, conf_file_path=conf_file_path)
-    conf_file_path = f'static/yamls/{experiment_names[1]}/{conf_file}'
+    else:
+        conf_file_path = f'static/yamls/{experiment_names[1]}/{conf_file}'
     return render_template(url, conf_file_path=conf_file_path)
 
 @app.route('/finished')
@@ -155,6 +157,7 @@ def collect(testid=''):
             age = []
             gender = []
             subjective_eval_ever = []
+            confidence = []
             for i in range(len(payload['trials'][0]['responses'])):
                 uuids.append(uuid)
                 ips.append(get_user_ip())
@@ -174,6 +177,8 @@ def collect(testid=''):
                      payload['trials'][0]['responses'][i]['snr'].split('/')[6])
                 preffered_utterance.append(
                      payload['trials'][0]['responses'][i]['preffered_utterance'])
+                confidence.append(
+                     payload['trials'][0]['responses'][i]['confidence'])
                 time.append(
                      payload['trials'][0]['responses'][i]['time'])
 
@@ -192,6 +197,7 @@ def collect(testid=''):
             df['age'] = pd.Series(age)
             df['gender'] = pd.Series(gender)
             df['subjective_eval_ever'] = pd.Series(subjective_eval_ever)
+            df['confidence'] = pd.Series(confidence)
             
             if csv_database in os.listdir():
                 df_og = pd.read_csv(csv_database, index_col=False)
