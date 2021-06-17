@@ -1,23 +1,298 @@
 bufferSize: 2048
 pages:
-# - content: <b>Welcome to AB testing framework for DRONE ego noise ehancement. You
-#     will be presented a reference audio clip and denoised audio clip from two separate
-#     algorithms. You will be required to select one of the two clips which sounds the
-#     closest to the reference audio clip. </b>
-#   id: first_page
-#   name: Welcome
-#   type: generic
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR2-MCCS0-SX29.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR2-MCCS0-SX29.n122.wav
-#   type: paired_comparison
-#   unforced: null
+- content: <b>Welcome to AB testing framework for DRONE ego noise ehancement. You
+    will be presented a reference audio clip and denoised audio clip from two separate
+    algorithms. You will be required to select one of the two clips which sounds the
+    closest to the reference audio clip. </b>
+  id: first_page
+  name: Welcome
+  type: generic
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SI725.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR4-FRNG0-SI725.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR4-FRNG0-SI725.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-MAHH0-SI1294.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR5-MAHH0-SI1294.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR5-MAHH0-SI1294.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SI725.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR4-FRNG0-SI725.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR4-FRNG0-SI725.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI1450.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR7-MGRT0-SI1450.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR7-MGRT0-SI1450.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR5-FJSA0-SI749.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR5-FJSA0-SI749.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR5-FJSA0-SI749.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR5-FJSA0-SI749.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SI844.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR1-FDAC1-SI844.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR1-FDAC1-SI844.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR7-MPAB0-SI1103.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR7-MPAB0-SI1103.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR3-MJJG0-SI1003.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR3-MJJG0-SI1003.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR3-MJJG0-SI1003.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-FRAM1-SI522.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR2-FRAM1-SI522.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR2-FRAM1-SI522.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR3-MJJG0-SI1003.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR3-MJJG0-SI1003.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR3-MJJG0-SI1003.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FJEM0-SX364.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR1-FJEM0-SX364.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR1-FJEM0-SX364.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI1450.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR7-MGRT0-SI1450.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR7-MGRT0-SI1450.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SI844.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR1-FDAC1-SI844.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR1-FDAC1-SI844.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI1450.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR7-MGRT0-SI1450.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR7-MGRT0-SI1450.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MPLB0-SI764.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR4-MPLB0-SI764.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR4-MPLB0-SI764.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR2-MCCS0-SX29.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR2-MCCS0-SX29.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SI725.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR4-FRNG0-SI725.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR4-FRNG0-SI725.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR4-FEDW0-SX364.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR4-FEDW0-SX364.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR4-FEDW0-SX364.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR4-FEDW0-SX364.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR4-FEDW0-SX364.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR4-FEDW0-SX364.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR4-FEDW0-SX364.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR4-FEDW0-SX364.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR2-MCCS0-SX29.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR2-MCCS0-SX29.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR2-MCCS0-SX29.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR2-MCCS0-SX29.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR4-FEDW0-SX364.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR4-FEDW0-SX364.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR2-MCCS0-SX29.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR2-MCCS0-SX29.n121.wav
+  type: paired_comparison
+  unforced: null
 - content: test description AB
   enableLooping: false
   id: trialAB2
@@ -25,417 +300,142 @@ pages:
   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR3-MJJG0-SI1003.n121.wav
   showWaveform: true
   stimuli:
-    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR3-MJJG0-SI1003.n121.wav
-    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR3-MJJG0-SI1003.n121.wav
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR3-MJJG0-SI1003.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR3-MJJG0-SI1003.n121.wav
   type: paired_comparison
   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR2-MCCS0-SX29.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR2-MCCS0-SX29.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR3-MJJG0-SI1003.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR3-MJJG0-SI1003.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR3-MJJG0-SI1003.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR4-FEDW0-SX364.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR4-FEDW0-SX364.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR4-FEDW0-SX364.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR4-FEDW0-SX364.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR2-MCCS0-SX29.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR2-MCCS0-SX29.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR5-FJSA0-SI749.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR5-FJSA0-SI749.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SI844.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR1-FDAC1-SI844.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR1-FDAC1-SI844.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-FRAM1-SI522.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR2-FRAM1-SI522.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR2-FRAM1-SI522.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SI844.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR1-FDAC1-SI844.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR1-FDAC1-SI844.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-MAHH0-SI1294.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR5-MAHH0-SI1294.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR5-MAHH0-SI1294.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR3-MJJG0-SI1003.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR3-MJJG0-SI1003.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR3-MJJG0-SI1003.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SI844.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR1-FDAC1-SI844.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR1-FDAC1-SI844.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR3-MJJG0-SI1003.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR3-MJJG0-SI1003.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR3-MJJG0-SI1003.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FJEM0-SX364.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR1-FJEM0-SX364.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR1-FJEM0-SX364.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR7-MPAB0-SI1103.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR7-MPAB0-SI1103.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI820.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR7-MGRT0-SI820.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR7-MGRT0-SI820.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR5-FJSA0-SI749.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR5-FJSA0-SI749.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR5-FJSA0-SI749.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR5-FJSA0-SI749.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI1450.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR7-MGRT0-SI1450.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR7-MGRT0-SI1450.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR5-FJSA0-SI749.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR5-FJSA0-SI749.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI820.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR7-MGRT0-SI820.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR7-MGRT0-SI820.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR7-MPAB0-SI1103.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR7-MPAB0-SI1103.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI1450.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR7-MGRT0-SI1450.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR7-MGRT0-SI1450.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI820.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR7-MGRT0-SI820.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR7-MGRT0-SI820.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-MFGK0-SI1451.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR5-MFGK0-SI1451.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR5-MFGK0-SI1451.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FJEM0-SI634.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR1-FJEM0-SI634.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR1-FJEM0-SI634.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-FRAM1-SI522.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR2-FRAM1-SI522.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR2-FRAM1-SI522.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI820.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR7-MGRT0-SI820.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR7-MGRT0-SI820.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FJEM0-SX364.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR1-FJEM0-SX364.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR1-FJEM0-SX364.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MPLB0-SI764.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR4-MPLB0-SI764.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR4-MPLB0-SI764.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-FRAM1-SI522.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR2-FRAM1-SI522.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR2-FRAM1-SI522.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR5-FJSA0-SI749.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR5-FJSA0-SI749.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR7-MPAB0-SI1103.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR7-MPAB0-SI1103.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR7-MPAB0-SI1103.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR7-MPAB0-SI1103.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI1450.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR7-MGRT0-SI1450.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR7-MGRT0-SI1450.n121.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n122.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR4-FEDW0-SX364.n122.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR4-FEDW0-SX364.n122.wav
-#   type: paired_comparison
-#   unforced: null
-# - content: test description AB
-#   enableLooping: false
-#   id: trialAB2
-#   name: null
-#   reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n121.wav
-#   showWaveform: true
-#   stimuli:
-#     C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR5-FJSA0-SI749.n121.wav
-#     C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR5-FJSA0-SI749.n121.wav
-#   type: paired_comparison
-#   unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MGRT0-SI820.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR7-MGRT0-SI820.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR7-MGRT0-SI820.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR7-MPAB0-SI1103.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR7-MPAB0-SI1103.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SI725.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR4-FRNG0-SI725.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR4-FRNG0-SI725.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MPLB0-SI764.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR4-MPLB0-SI764.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR4-MPLB0-SI764.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-MFGK0-SI1451.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR5-MFGK0-SI1451.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR5-MFGK0-SI1451.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR7-MPAB0-SI1103.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR7-MPAB0-SI1103.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MPAB0-SI1103.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR7-MPAB0-SI1103.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR7-MPAB0-SI1103.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-FRAM1-SI522.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR2-FRAM1-SI522.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR2-FRAM1-SI522.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SX29.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR2-MCCS0-SX29.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR2-MCCS0-SX29.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FJEM0-SX364.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR1-FJEM0-SX364.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR1-FJEM0-SX364.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FJSA0-SI749.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR5-FJSA0-SI749.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR5-FJSA0-SI749.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: test description AB
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SX364.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-15dB/Noisy_DR4-FEDW0-SX364.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-15dB/RegressionFCNN_DR4-FEDW0-SX364.n122.wav
+  type: paired_comparison
+  unforced: null
 - content: Thank you for attending
   name: Thank you
   questionnaire:
