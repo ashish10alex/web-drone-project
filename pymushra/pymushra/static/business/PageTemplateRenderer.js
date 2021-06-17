@@ -88,7 +88,9 @@ PageTemplateRenderer.prototype.unlockNextButton = function() {
 
 
 PageTemplateRenderer.prototype.refresh = function() {
-    $('#' + this.progressbarId).progressbar('option', 'value', ((this.pageManager.getPageIndex()) / (this.pageManager.getNumPages()-1)) * 100);
+    pagesPassed = this.pageManager.getPageIndex() / (this.pageManager.getNumPages()-1)
+    
+    $('#' + this.progressbarId).progressbar('option', 'value', Math.round(pagesPassed * 1000) / 10);
     $('#' + this.headerId).empty();
     this.renderHeader(this.headerId);
 
