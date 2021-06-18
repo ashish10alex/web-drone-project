@@ -41,7 +41,7 @@ def website_specific_metadata(root_dir, snr):
     return path_dict_website
 
 
-def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
+def make_yaml_file(yaml_dir, combinations, idx_meta='0_20', is_baseline=False):
     print(f'''
     {len(combinations)} pages will be created for subjective evalutation
     ''')
@@ -144,7 +144,10 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
     final_dict_template['pages'] = pages
     
     # dict to yaml
-    yaml_file_path = os.path.join(yaml_dir, f'idx_{idx_meta}.yaml')
+    file_name = f'idx_{idx_meta}.yaml'
+    if is_baseline:
+        file_name = 'baseline_'+file_name
+    yaml_file_path = os.path.join(yaml_dir, file_name)
     with open(yaml_file_path, 'w') as f:
         yaml.dump(final_dict_template, f)
     print('Created yaml file at: ', yaml_file_path)
@@ -213,8 +216,9 @@ def generate_combinations(root_dir, selected_models=['Noisy', 'RegressionFCNN'],
             ranges.append([start, start+ window])
             start +=window
             
+    is_baseline = yaml_folder == 'baseline_vs_noisy'
     for start, end in ranges:
-        make_yaml_file(out_yaml_dir, combinations=final_list[start:end], idx_meta=f'{start}_{end}')
+        make_yaml_file(out_yaml_dir, combinations=final_list[start:end], idx_meta=f'{start}_{end}', is_baseline=is_baseline)
     
 def generate_baseline_noisy(root_dir):
     print('Generating baseline vs noisy pairs')
