@@ -23,27 +23,27 @@ app = Flask(__name__)
 os.makedirs('db', exist_ok=True)
 
 
-page_groups = [['idx_480_520.yaml',
+page_groups = [['idx_760_800.yaml',
   'idx_680_720.yaml',
-  'idx_240_280.yaml',
-  'idx_520_560.yaml',
-  'idx_200_240.yaml',
-  'idx_320_360.yaml',
-  'idx_40_80.yaml'],
- ['idx_360_400.yaml',
-  'baseline_idx_80_120.yaml',
+  'idx_800_840.yaml',
+  'idx_720_760.yaml',
   'idx_600_640.yaml',
-  'idx_640_680.yaml',
-  'idx_80_120.yaml',
-  'idx_0_40.yaml',
-  'idx_560_600.yaml'],
+  'idx_40_80.yaml',
+  'idx_320_360.yaml'],
  ['idx_400_440.yaml',
-  'idx_280_320.yaml',
-  'baseline_idx_0_40.yaml',
+  'idx_480_520.yaml',
+  'idx_560_600.yaml',
+  'idx_0_40.yaml',
+  'idx_80_120.yaml',
+  'idx_520_560.yaml',
+  'idx_360_400.yaml'],
+ ['idx_640_680.yaml',
   'idx_440_480.yaml',
-  'idx_120_160.yaml',
+  'idx_240_280.yaml',
   'idx_160_200.yaml',
-  'baseline_idx_40_80.yaml']]
+  'idx_120_160.yaml',
+  'idx_200_240.yaml',
+  'idx_280_320.yaml']]
 
 ip_group_map = {
   '138.37.90.152': 2,
@@ -102,7 +102,7 @@ def home(url='index.html'):
     all_conf_files = []
     all_seen_files = []
     for exp_name, db_name in zip(experiment_names, database_names):
-        conf_files, seen_files = select_unique_yaml_files(experiment_name=exp_name, csv_database=db_name)
+        conf_files, seen_files = select_unique_yaml_files(experiment_name='pages', csv_database=db_name)
         all_conf_files += conf_files
         all_seen_files += seen_files
     if len(all_conf_files) == 0:
@@ -119,10 +119,11 @@ def home(url='index.html'):
         # select a random config file which has not yet been done so far 
         conf_file = page_group[random.randint(0, len(page_group)-1)]
         print(conf_file, file=sys.stderr)
-        if conf_file.split('_')[0] == 'baseline':
-            conf_file_path = f'static/yamls/{experiment_names[0]}/{conf_file}'
-        else:
-            conf_file_path = f'static/yamls/{experiment_names[1]}/{conf_file}'
+        conf_file_path = f'static/yamls/pages/{conf_file}'
+#         if conf_file.split('_')[0] == 'baseline':
+#             conf_file_path = f'static/yamls/{experiment_names[0]}/{conf_file}'
+#         else:
+#             conf_file_path = f'static/yamls/{experiment_names[1]}/{conf_file}'
         return render_template(url, conf_file_path=conf_file_path)
         
     except KeyError:
