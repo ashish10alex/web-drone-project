@@ -23,6 +23,8 @@ app = Flask(__name__)
 os.makedirs('db', exist_ok=True)
 
 
+
+csv_database = 'database_mixed.csv'
 page_groups = [['idx_760_800.yaml',
   'idx_680_720.yaml',
   'idx_800_840.yaml',
@@ -52,6 +54,15 @@ ip_group_map = {
   '10.100.0.3': 0,
 }
 
+# For testing
+# ip_group_map = {
+#     '138.37.90.152': 2,
+#     '66.249.66.50': 2,
+#     '127.0.0.1': 2,
+#     '82.13.188.176': 1,
+#     '10.100.0.3': 0,
+# }
+
 def get_user_ip():
     headers_list = request.headers.getlist("X-Forwarded-For")
     user_ip = headers_list[0] if headers_list else request.remote_addr
@@ -75,8 +86,8 @@ def get_seen_yaml_files(csv_database):
     else: seen_files = []
     return seen_files
 
-def select_unique_yaml_files(experiment_name, csv_database):
-    all_files = os.listdir(f'pymushra/pymushra/static/yamls/{experiment_name}')
+def select_unique_yaml_files():
+    all_files = os.listdir(f'pymushra/pymushra/static/yamls/pages')
 
     #get seen files and remove them off the the list off all files
     seen_files = get_seen_yaml_files(csv_database)
@@ -87,28 +98,15 @@ def select_unique_yaml_files(experiment_name, csv_database):
 
     return all_files, seen_files
 
-experiment_names = ['baseline_vs_noisy', 'other_model_combinations']
-database_names = [f'database_{experiment_names[0]}.csv', f'database_{experiment_names[1]}.csv']
-
 @app.route('/')
 @app.route('/<path:url>')
 def home(url='index.html'):
-    #Old version
-    # return send_from_directory(app.config['webmushra_dir'], url )
-
-    #New version
-    # experiment_name = app.config['experiment_name']
- 
-    all_conf_files = []
-    all_seen_files = []
-    for exp_name, db_name in zip(experiment_names, database_names):
-        conf_files, seen_files = select_unique_yaml_files(experiment_name='pages', csv_database=db_name)
-        all_conf_files += conf_files
-        all_seen_files += seen_files
+    all_conf_files, all_seen_files = select_unique_yaml_files()
     if len(all_conf_files) == 0:
         return render_template('finished.html', seen_files=all_seen_files)
 
     user_ip = get_user_ip()
+    print(user_ip)
     try:
         page_group = page_groups[ip_group_map[user_ip]]
         page_group = [p for p in page_group if p not in all_seen_files]
@@ -120,10 +118,6 @@ def home(url='index.html'):
         conf_file = page_group[random.randint(0, len(page_group)-1)]
         print(conf_file, file=sys.stderr)
         conf_file_path = f'static/yamls/pages/{conf_file}'
-#         if conf_file.split('_')[0] == 'baseline':
-#             conf_file_path = f'static/yamls/{experiment_names[0]}/{conf_file}'
-#         else:
-#             conf_file_path = f'static/yamls/{experiment_names[1]}/{conf_file}'
         return render_template(url, conf_file_path=conf_file_path)
         
     except KeyError:
@@ -133,36 +127,29 @@ def home(url='index.html'):
 @app.route('/finished')
 @only_admin_allowlist
 def finishedExperiments():
-    baseline_left_files, baseline_done_files = select_unique_yaml_files(experiment_name='baseline_vs_noisy', csv_database=f'database_{experiment_names[0]}.csv')
-    others_left_files, others_done_files = select_unique_yaml_files(experiment_name='other_model_combinations', csv_database=f'database_{experiment_names[1]}.csv')
-    return render_template('finished.html', baseline_left_files=baseline_left_files, baseline_done_files=baseline_done_files, others_left_files=others_left_files, others_done_files=others_done_files)
+    left_files, done_files = select_unique_yaml_files()
+    return render_template('finished.html', left_files=left_files, done_files=done_files)
 
-@app.route('/results', methods=['GET', 'POST'])
+@app.route('/results')
 @only_admin_allowlist
 def results():
-    if request.method == 'POST':
         try:
-            experiment_name = request.values.get('exp_name')
-            csv_database = f'database_{experiment_name}.csv'
             df_html = pd.read_csv(csv_database).to_html()
-            return render_template('results.html', df_html=df_html, experiment_name=experiment_name)
+            return render_template('results.html', df_html=df_html)
         except:
-            print('Somethings wrong')
-    return render_template('results.html')
+            return abort(403)
     
 
 @app.route('/service/write.php', methods=['POST'])
 @app.route('/<testid>/collect', methods=['POST'])
 @app.route('/collect', methods=['POST'])
 def collect(testid=''):
-    # csv_database = f'database_{experiment_name}.csv'
     if request.headers['Content-Type'].startswith(
             'application/x-www-form-urlencoded'
     ):
         try:
             db = app.config['db']
             payload = json.loads(request.form['sessionJSON'])
-            print(payload)
             payload = casting.cast_recursively(payload)
             insert = casting.json_to_dict(payload)
 
@@ -179,10 +166,6 @@ def collect(testid=''):
             
             uuid = payload['trials'][0]['questionaire']['uuid']
             config = payload['config'].split('/')[-1]
-            
-            if config.split('_')[0] == 'baseline':
-                csv_database = f'database_{experiment_names[0]}.csv'
-            else: csv_database = f'database_{experiment_names[1]}.csv'
             
             uuids = []
             ips = []
@@ -250,7 +233,6 @@ def collect(testid=''):
             collection = db.table(payload['trials'][0]['testId'])
             with transaction(collection):
                 inserted_ids = collection.insert_multiple(insert)
-            # print(inserted_ids)
 
             return jsonify({
                 'error': False,
