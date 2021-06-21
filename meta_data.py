@@ -120,7 +120,7 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
         'type': 'generic',
         'id': 'first_page',
         'name': 'Welcome',
-        'content': '<b>Welcome to AB testing framework for DRONE ego noise ehancement. You will be presented a reference audio clip and denoised audio clip from two separate algorithms. You will be required to select one of the two clips which sounds the closest to the reference audio clip. </b>'
+        'content': '<h1>Subjective evaluation</h1><b>Welcome to AB testing framework for DRONE ego noise ehancement. You will be presented a reference audio clip and denoised audio clip from two separate algorithms. You will be required to select one of the two clips which sounds the closest to the reference audio clip. </b>'
     }
     pages=[]
     pages.append(welcome_page_template)
@@ -129,7 +129,7 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
          'id': 'trialAB2',
          'name': None,
          'unforced': None,
-         'content': 'test description AB',
+         'content': '',
          'showWaveform': True,
          'enableLooping': False,
          'reference': '',
