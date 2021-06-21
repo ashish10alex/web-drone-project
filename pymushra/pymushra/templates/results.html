@@ -3,21 +3,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form method="POST" action="/results">
-    <label for="exp_name"> <b> Choose Experiment configuration you wish to see results for</b> </label>
-    <select name="exp_name" id="exp_type_select">
-      <option selected="true" disabled="disabled">Experiment Type</option>
-      <option value="baseline_vs_noisy">Baseline vs Noisy</option>
-      <option value="other_model_combinations">Other model combinations</option>
-    </select>
-    <br><br>
-    <input type="submit" value="show" >
-  </form>
-
 <!-- Add results below -->
 
     {% if df_html|safe %} 
-    <h2> Results for {{experiment_name}} </h2>
+    <h2> Results from the experiment</h2>
         {{df_html | safe }}
     {% endif %}
 

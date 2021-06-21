@@ -1,43 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3> Baseline vs Noisy Experiments</h3>
-<div id="grid">
-    <div id="box">
-            {% if baseline_done_files %}
-            <h3> Done </h3>
-            <ol>
-                {% for done in baseline_done_files %}
-                <li> {{done}} </li>
-                {%endfor%}
-            </ol>
-            {% endif %}
-    </div>
-
-    <div id="box">
-            {% if baseline_left_files %}
-            <h3> Left </h3>
-            <ol>
-                {% for left in baseline_left_files %}
-                <li> {{left}} </li>
-                {%endfor%}
-            </ol>
-            {% endif %}
-    </div>
-<!-- End og first grid -->
-</div>
-
 <br>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 <br>
 
-<h3> Other Model Combinations Experiments</h3>
+<h3>Experiments</h3>
 <div id="grid">
     <div id="box">
-            {% if others_done_files %}
+            {% if done_files %}
             <h3> Done </h3>
             <ol>
-                {% for done in others_done_files %}
+                {% for done in done_files %}
                 <li> {{done}} </li>
                 {%endfor%}
             </ol>
@@ -45,10 +19,10 @@
     </div>
 
     <div id="box">
-            {% if others_left_files %}
+            {% if left_files %}
             <h3> Left </h3>
             <ol>
-                {% for left in others_left_files %}
+                {% for left in left_files %}
                 <li> {{left}} </li>
                 {%endfor%}
             </ol>

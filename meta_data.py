@@ -41,7 +41,7 @@ def website_specific_metadata(root_dir, snr):
     return path_dict_website
 
 
-def make_yaml_file(yaml_dir, combinations, idx_meta='0_20', is_baseline=False):
+def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
     print(f'''
     {len(combinations)} pages will be created for subjective evalutation
     ''')
@@ -145,8 +145,8 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20', is_baseline=False):
     
     # dict to yaml
     file_name = f'idx_{idx_meta}.yaml'
-    if is_baseline:
-        file_name = 'baseline_'+file_name
+#     if is_baseline:
+#         file_name = 'baseline_'+file_name
     yaml_file_path = os.path.join(yaml_dir, file_name)
     with open(yaml_file_path, 'w') as f:
         yaml.dump(final_dict_template, f)
@@ -185,21 +185,30 @@ def get_combinations_of_index(df, idx):
     return final_combination_list 
 
     
-def generate_combinations(root_dir, selected_models=['Noisy', 'RegressionFCNN'], yaml_folder='baseline_vs_noisy'):
+def generate_combinations(root_dir, yaml_folder='pages', selected_models=None):
     yaml.Dumper.ignore_aliases = lambda *args : True
     meta_dir = os.path.join(root_dir, 'meta_data_for_yaml')
     out_yaml_dir = os.path.join(root_dir, f'pymushra/pymushra/static/yamls/{yaml_folder}')
     os.makedirs(out_yaml_dir, exist_ok=True)
     
-    df_all_snr_dict = {}
-    for snr in snrs:
-        df_all_snr_dict[str(snr)] = pd.read_csv(os.path.join(meta_dir, f'website_meta_data_snr_{snr}dB.csv'),
-                                                usecols=['Clean']+selected_models)
-        
-    # get big dict
-    df = pd.concat([df_all_snr_dict[snr] for snr in snrs], ignore_index=True)
+    selected_models=[
+        ['Noisy', 'RegressionFCNN'],
+        ['DCUNet', 'DPTNet', 'SMoLnet', 'WaveUNet'],
+    ]
     
-    final_list = [r for i in range(len(df)) for r in get_combinations_of_index(df, i)]
+    final_list = []
+    
+    for model_group in selected_models:
+        
+        df_all_snr_dict = {}
+        for snr in snrs:
+            df_all_snr_dict[str(snr)] = pd.read_csv(os.path.join(meta_dir, f'website_meta_data_snr_{snr}dB.csv'),
+                                                    usecols=['Clean']+model_group)
+
+        # get big dict
+        df = pd.concat([df_all_snr_dict[snr] for snr in snrs], ignore_index=True)
+
+        final_list += [r for i in range(len(df)) for r in get_combinations_of_index(df, i)]
     
     random.seed(42)
     random.shuffle(final_list)
@@ -216,9 +225,8 @@ def generate_combinations(root_dir, selected_models=['Noisy', 'RegressionFCNN'],
             ranges.append([start, start+ window])
             start +=window
             
-    is_baseline = yaml_folder == 'baseline_vs_noisy'
     for start, end in ranges:
-        make_yaml_file(out_yaml_dir, combinations=final_list[start:end], idx_meta=f'{start}_{end}', is_baseline=is_baseline)
+        make_yaml_file(out_yaml_dir, combinations=final_list[start:end], idx_meta=f'{start}_{end}')
     
 def generate_baseline_noisy(root_dir):
     print('Generating baseline vs noisy pairs')
@@ -228,11 +236,17 @@ def generate_others(root_dir):
     print('Generation other model combinations')
     generate_combinations(root_dir, ['DCUNet', 'DPTNet', 'SMoLnet', 'WaveUNet'], 'other_model_combinations')
     
+def generate_all(root_dir):
+    print('Generate all of them')
+    generate_combinations(root_dir)
+    
 def main(action_type, root_dir):
     if action_type == 'common':
         generate_common(root_dir)
     elif action_type == 'baseline_noisy':
         generate_baseline_noisy(root_dir)
+    elif action_type == 'all':
+        generate_all(root_dir)
     elif action_type == 'others':
         generate_others(root_dir)
     else:
@@ -241,7 +255,7 @@ def main(action_type, root_dir):
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate metadata CSVs for subjective evaluation webapp')
-    parser.add_argument('type', choices=['common', 'baseline_noisy', 'others'], help='Generation step')
+    parser.add_argument('type', choices=['common', 'baseline_noisy', 'all', 'others'], help='Generation step')
     parser.add_argument('--root_dir', metavar='PATH', type=str, help='Project root directory', default=os.getcwd())
     args = parser.parse_args()
     main(args.type, args.root_dir)
