@@ -124,7 +124,7 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
     }
     pages=[]
     pages.append(welcome_page_template)
-    for i in range(1, len(combinations)):
+    for i in range(len(combinations)):
         pages_dict_template = {'type': 'paired_comparison',
          'id': 'trialAB2',
          'name': None,
@@ -136,9 +136,9 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
          'stimuli': {'C1': '',
           'C2': ''}}
         pages.append(pages_dict_template)
-        pages[i]['reference'] = combinations[i][0]
-        pages[i]['stimuli']['C1'] = combinations[i][1]
-        pages[i]['stimuli']['C2'] = combinations[i][2]
+        pages[i+1]['reference'] = combinations[i][0]
+        pages[i+1]['stimuli']['C1'] = combinations[i][1]
+        pages[i+1]['stimuli']['C2'] = combinations[i][2]
     
     pages.append(final_page_template)
     final_dict_template['pages'] = pages
