@@ -123,6 +123,12 @@ def home(url='index.html'):
     except KeyError:
         return abort(403)
 
+@app.route('/test')
+@app.route('/<path:url>')
+def test_page(url='index_test.html'):
+    conf_file_path = 'static/yamls/test.yaml'
+    return render_template(url, conf_file_path=conf_file_path)
+
 
 @app.route('/finished')
 @only_admin_allowlist
@@ -166,7 +172,10 @@ def collect(testid=''):
             
             uuid = payload['trials'][0]['questionaire']['uuid']
             config = payload['config'].split('/')[-1]
-            
+            if config == 'test.yaml': 
+                return jsonify({
+                    'error': False,
+                })
             uuids = []
             ips = []
             clean_references = []
