@@ -1,11 +1,14 @@
 from __future__ import division, absolute_import, print_function
 
 import os
+import os.path
 import sys
 import json
 import pickle
 import pandas as pd
 import random
+import threading
+import time
 from flask import Flask, request, jsonify, send_from_directory, send_file, \
     render_template, redirect, url_for, abort
 from tinyrecord import transaction
@@ -22,7 +25,7 @@ except ImportError:
 app = Flask(__name__)
 os.makedirs('db', exist_ok=True)
 
-
+testpage_mutex = threading.Lock()
 
 csv_database = 'database_mixed.csv'
 page_groups = [['idx_760_800.yaml',
@@ -63,6 +66,30 @@ ip_group_map = {
     '10.100.0.3': 0,
 }
 
+disjoint_pages = [
+  'idx_760_800.yaml',
+  'idx_680_720.yaml',
+  'idx_800_840.yaml',
+  'idx_720_760.yaml',
+  'idx_600_640.yaml',
+  'idx_40_80.yaml',
+  'idx_320_360.yaml',
+  'idx_400_440.yaml',
+  'idx_480_520.yaml',
+  'idx_560_600.yaml',
+  'idx_0_40.yaml',
+  'idx_80_120.yaml',
+  'idx_520_560.yaml',
+  'idx_360_400.yaml',
+  'idx_640_680.yaml',
+  'idx_440_480.yaml',
+  'idx_240_280.yaml',
+  'idx_160_200.yaml',
+  'idx_120_160.yaml',
+  'idx_200_240.yaml',
+  'idx_280_320.yaml'
+]
+
 def get_user_ip():
     headers_list = request.headers.getlist("X-Forwarded-For")
     user_ip = headers_list[0] if headers_list else request.remote_addr
@@ -98,30 +125,69 @@ def select_unique_yaml_files():
 
     return all_files, seen_files
 
+def pagemap_op(func):
+    pagemap = {}
+    with testpage_mutex:
+        pagemap_path = 'pagemap.pickle'
+        if os.path.isfile(pagemap_path):
+            with open(pagemap_path, 'rb') as f:
+                pagemap = pickle.load(f)
+                
+        pagemap_new = func(pagemap)
+        with open(pagemap_path, 'wb') as f:
+            pickle.dump(pagemap_new, f)
+            
+    return pagemap_new
+
 @app.route('/')
 @app.route('/<path:url>')
 def home(url='index.html'):
-    all_conf_files, all_seen_files = select_unique_yaml_files()
-    if len(all_conf_files) == 0:
-        return render_template('finished.html', seen_files=all_seen_files)
-
+    
     user_ip = get_user_ip()
-    print(user_ip)
-    try:
-        page_group = page_groups[ip_group_map[user_ip]]
-        page_group = [p for p in page_group if p not in all_seen_files]
-
-        if len(page_group) == 0:
-            return render_template('finished.html', seen_files=all_seen_files)    
-
-        # select a random config file which has not yet been done so far 
-        conf_file = page_group[random.randint(0, len(page_group)-1)]
-        print(conf_file, file=sys.stderr)
-        conf_file_path = f'static/yamls/pages/{conf_file}'
-        return render_template(url, conf_file_path=conf_file_path)
+    
+    def select_page(pagemap):
+        if user_ip in pagemap:
+            print('Pagemapped!', file=sys.stderr)
+            return pagemap
         
-    except KeyError:
-        return abort(403)
+        all_conf_files, all_seen_files = select_unique_yaml_files()
+        untaken_pages = [p for p in all_conf_files if p not in pagemap.values()]
+        
+        untaken_disjoint_pages = [p for p in untaken_pages if p in disjoint_pages]
+        untaken_extra_pages = [p for p in untaken_pages if p not in disjoint_pages]
+        random.shuffle(untaken_disjoint_pages)
+        random.shuffle(untaken_extra_pages)
+        
+        print(untaken_disjoint_pages, file=sys.stderr)
+        print(untaken_extra_pages, file=sys.stderr)
+        selected_page = (untaken_disjoint_pages + untaken_extra_pages)[0]
+        pagemap[user_ip] = selected_page
+        return pagemap
+
+    pagemap = pagemap_op(select_page)
+    conf_file = pagemap.get(user_ip, None)
+    
+    if conf_file is None:
+        return render_template('finished.html', seen_files=all_seen_files)
+    else:
+        conf_file_path = f'static/yamls/pages/{conf_file}'
+        return render_template('index.html', conf_file_path=conf_file_path)
+    
+#     try:
+#         page_group = page_groups[ip_group_map[user_ip]]
+#         page_group = [p for p in page_group if p not in all_seen_files]
+
+#         if len(page_group) == 0:
+#             return render_template('finished.html', seen_files=all_seen_files)    
+
+#         # select a random config file which has not yet been done so far 
+#         conf_file = page_group[random.randint(0, len(page_group)-1)]
+#         print(conf_file, file=sys.stderr)
+#         conf_file_path = f'static/yamls/pages/{conf_file}'
+#         return render_template(url, conf_file_path=conf_file_path)
+        
+#     except KeyError:
+#         return abort(403)
 
 @app.route('/test')
 @app.route('/<path:url>')
@@ -159,6 +225,7 @@ def collect(testid=''):
             payload = casting.cast_recursively(payload)
             insert = casting.json_to_dict(payload)
 
+            user_ip = get_user_ip()
             #add db here
 
             columns = [k for k in payload['trials'][0]['responses'][0].keys()] + ['ip']
@@ -194,7 +261,7 @@ def collect(testid=''):
             confidence = []
             for i in range(len(payload['trials'][0]['responses'])):
                 uuids.append(uuid)
-                ips.append(get_user_ip())
+                ips.append(user_ip)
                 configs.append(config)
                 name.append(participant_metadata[0])
                 email.append(participant_metadata[1])
@@ -233,16 +300,23 @@ def collect(testid=''):
             df['subjective_eval_ever'] = pd.Series(subjective_eval_ever)
             df['confidence'] = pd.Series(confidence)
             
-            if csv_database in os.listdir():
-                df_og = pd.read_csv(csv_database, index_col=False)
-                df_og = df_og.append(df)
-                df_og.to_csv(csv_database, index=False)
-            else: df.to_csv(csv_database, index=False)
+            def update_everything_and_pagemap(pagemap):
 
-            collection = db.table(payload['trials'][0]['testId'])
-            with transaction(collection):
-                inserted_ids = collection.insert_multiple(insert)
+                if csv_database in os.listdir():
+                    df_og = pd.read_csv(csv_database, index_col=False)
+                    df_og = df_og.append(df)
+                    df_og.to_csv(csv_database, index=False)
+                else: df.to_csv(csv_database, index=False)
 
+                collection = db.table(payload['trials'][0]['testId'])
+                with transaction(collection):
+                    inserted_ids = collection.insert_multiple(insert)
+                    
+                pagemap.pop(user_ip)
+                return pagemap
+            
+            pagemap_op(update_everything_and_pagemap)
+                
             return jsonify({
                 'error': False,
                 'message': "Saved as ids %s" % ','.join(map(str, inserted_ids))

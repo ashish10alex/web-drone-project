@@ -120,7 +120,7 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
         'type': 'generic',
         'id': 'first_page',
         'name': 'Welcome',
-        'content': '<h1>Subjective evaluation</h1><b>Welcome to AB testing framework for DRONE ego noise ehancement. You will be presented a reference audio clip and denoised audio clip from two separate algorithms. You will be required to select one of the two clips which sounds the closest to the reference audio clip. </b>'
+        'content': '<h3>Welcome to the audio subjective evaluation app</h3><b>You will be presented a reference audio clip which contains a spoken sentence in English and two processed audio clips A and B. You will be required to select one of the two clips which sounds the closest to the reference audio clip.</b></br>You will also be asked how confident you are in your choice with three options to answer: "low", "medium" and "high". You might use the guidance which follows to help you in choosing one of those three options. </br> <ul><li>Select "low" if you think that clips A and B sound very similar OR if you think that none of them sounds similar to the reference at all;</li><li>Select "medium" if you think that your choice could be debated by another person;</li><li>Select "high" if you think that the clip of your choice is objectively closer to the reference than the other one.</li></ul>'
     }
     pages=[]
     pages.append(welcome_page_template)
@@ -185,7 +185,7 @@ def get_combinations_of_index(df, idx):
     return final_combination_list 
 
     
-def generate_combinations(root_dir, yaml_folder='pages', selected_models=None):
+def generate_combinations(root_dir, yaml_folder='pages', random_pages=40, selected_models=None):
     yaml.Dumper.ignore_aliases = lambda *args : True
     meta_dir = os.path.join(root_dir, 'meta_data_for_yaml')
     out_yaml_dir = os.path.join(root_dir, f'pymushra/pymushra/static/yamls/{yaml_folder}')
@@ -227,6 +227,9 @@ def generate_combinations(root_dir, yaml_folder='pages', selected_models=None):
             
     for start, end in ranges:
         make_yaml_file(out_yaml_dir, combinations=final_list[start:end], idx_meta=f'{start}_{end}')
+        
+    for i in range(random_pages):
+        make_yaml_file(out_yaml_dir, combinations=random.sample(final_list, window), idx_meta=f'random_{i}')
     
 def generate_baseline_noisy(root_dir):
     print('Generating baseline vs noisy pairs')

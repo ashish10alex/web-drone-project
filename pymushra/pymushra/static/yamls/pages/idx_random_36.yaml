@@ -1,0 +1,503 @@
+bufferSize: 2048
+pages:
+- content: '<h3>Welcome to the audio subjective evaluation app</h3><b>You will be
+    presented a reference audio clip which contains a spoken sentence in English and
+    two processed audio clips A and B. You will be required to select one of the two
+    clips which sounds the closest to the reference audio clip.</b></br>You will also
+    be asked how confident you are in your choice with three options to answer: "low",
+    "medium" and "high". You might use the guidance which follows to help you in choosing
+    one of those three options. </br> <ul><li>Select "low" if you think that clips
+    A and B sound very similar OR if you think that none of them sounds similar to
+    the reference at all;</li><li>Select "medium" if you think that your choice could
+    be debated by another person;</li><li>Select "high" if you think that the clip
+    of your choice is objectively closer to the reference than the other one.</li></ul>'
+  id: first_page
+  name: Welcome
+  type: generic
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MPWM0-SI1757.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-25dB/DCUNet_DR4-MPWM0-SI1757.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-25dB/SMoLnet_DR4-MPWM0-SI1757.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR6-MRJR0-SI2313.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-25dB/DCUNet_DR6-MRJR0-SI2313.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-25dB/SMoLnet_DR6-MRJR0-SI2313.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MNJM0-SI950.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-15dB/DCUNet_DR7-MNJM0-SI950.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-15dB/DPTNet_DR7-MNJM0-SI950.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MTEB0-SI2064.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-25dB/DCUNet_DR4-MTEB0-SI2064.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR4-MTEB0-SI2064.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MNJM0-SI950.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-25dB/DCUNet_DR7-MNJM0-SI950.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR7-MNJM0-SI950.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SI1084.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-25dB/DCUNet_DR4-FEDW0-SI1084.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-25dB/SMoLnet_DR4-FEDW0-SI1084.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCEM0-SI768.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-10dB/Noisy_DR2-MCEM0-SI768.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-10dB/RegressionFCNN_DR2-MCEM0-SI768.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SA1.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-15dB/DPTNet_DR1-FDAC1-SA1.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-15dB/WaveUNet_DR1-FDAC1-SA1.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SI1469.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-10dB/DCUNet_DR2-MCCS0-SI1469.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-10dB/DPTNet_DR2-MCCS0-SI1469.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FASW0-SX290.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-15dB/DCUNet_DR5-FASW0-SX290.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-15dB/DPTNet_DR5-FASW0-SX290.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MGWT0-SI909.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-10dB/DPTNet_DR2-MGWT0-SI909.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-10dB/SMoLnet_DR2-MGWT0-SI909.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SI1469.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-15dB/DPTNet_DR2-MCCS0-SI1469.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-15dB/WaveUNet_DR2-MCCS0-SI1469.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SX365.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-15dB/SMoLnet_DR4-FRNG0-SX365.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-15dB/WaveUNet_DR4-FRNG0-SX365.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MTEB0-SI2064.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR4-MTEB0-SI2064.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR4-MTEB0-SI2064.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FELC0-SI1386.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-15dB/SMoLnet_DR1-FELC0-SI1386.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-15dB/WaveUNet_DR1-FELC0-SI1386.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MGWT0-SI909.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-25dB/Noisy_DR2-MGWT0-SI909.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-25dB/RegressionFCNN_DR2-MGWT0-SI909.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MGWT0-SI909.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-25dB/DPTNet_DR2-MGWT0-SI909.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR2-MGWT0-SI909.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR6-MRJR0-SI2313.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-10dB/DCUNet_DR6-MRJR0-SI2313.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-10dB/WaveUNet_DR6-MRJR0-SI2313.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MPWM0-SI1757.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-20dB/SMoLnet_DR4-MPWM0-SI1757.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-20dB/WaveUNet_DR4-MPWM0-SI1757.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MTEB0-SI2064.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-25dB/DPTNet_DR4-MTEB0-SI2064.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR4-MTEB0-SI2064.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SA1.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-20dB/DPTNet_DR1-FDAC1-SA1.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-20dB/SMoLnet_DR1-FDAC1-SA1.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SI1084.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-15dB/DPTNet_DR4-FEDW0-SI1084.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-15dB/WaveUNet_DR4-FEDW0-SI1084.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FASW0-SX290.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-15dB/DCUNet_DR5-FASW0-SX290.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-15dB/DPTNet_DR5-FASW0-SX290.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MTEB0-SI2064.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Noisy/-20dB/Noisy_DR4-MTEB0-SI2064.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/RegressionFCNN/-20dB/RegressionFCNN_DR4-MTEB0-SI2064.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SA1.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-10dB/DCUNet_DR1-FDAC1-SA1.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-10dB/SMoLnet_DR1-FDAC1-SA1.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FEDW0-SI1084.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-20dB/DPTNet_DR4-FEDW0-SI1084.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-20dB/WaveUNet_DR4-FEDW0-SI1084.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FUTB0-SI1330.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-25dB/DPTNet_DR5-FUTB0-SI1330.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR5-FUTB0-SI1330.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR2-MCCS0-SI1469.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-20dB/SMoLnet_DR2-MCCS0-SI1469.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-20dB/WaveUNet_DR2-MCCS0-SI1469.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MTEB0-SI2064.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-20dB/DCUNet_DR4-MTEB0-SI2064.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-20dB/SMoLnet_DR4-MTEB0-SI2064.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR6-MRJR0-SI2313.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-25dB/DPTNet_DR6-MRJR0-SI2313.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR6-MRJR0-SI2313.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FUTB0-SI1330.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-15dB/SMoLnet_DR5-FUTB0-SI1330.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-15dB/WaveUNet_DR5-FUTB0-SI1330.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR7-MNJM0-SI950.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-25dB/SMoLnet_DR7-MNJM0-SI950.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR7-MNJM0-SI950.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR1-FDAC1-SA1.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-20dB/DCUNet_DR1-FDAC1-SA1.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-20dB/DPTNet_DR1-FDAC1-SA1.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SX365.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-20dB/DCUNet_DR4-FRNG0-SX365.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-20dB/SMoLnet_DR4-FRNG0-SX365.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SX365.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-25dB/DCUNet_DR4-FRNG0-SX365.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-25dB/DPTNet_DR4-FRNG0-SX365.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR5-FASW0-SX290.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-10dB/DCUNet_DR5-FASW0-SX290.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-10dB/WaveUNet_DR5-FASW0-SX290.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FGJD0-SI818.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-25dB/DCUNet_DR4-FGJD0-SI818.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-25dB/WaveUNet_DR4-FGJD0-SI818.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FGJD0-SI818.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DCUNet/-15dB/DCUNet_DR4-FGJD0-SI818.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/SMoLnet/-15dB/SMoLnet_DR4-FGJD0-SI818.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-MPWM0-SI1757.n122.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-10dB/DPTNet_DR4-MPWM0-SI1757.n122.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-10dB/WaveUNet_DR4-MPWM0-SI1757.n122.wav
+  type: paired_comparison
+  unforced: null
+- content: ''
+  enableLooping: false
+  id: trialAB2
+  name: null
+  reference: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/Clean/clean_DR4-FRNG0-SX365.n121.wav
+  showWaveform: true
+  stimuli:
+    C1: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/DPTNet/-20dB/DPTNet_DR4-FRNG0-SX365.n121.wav
+    C2: static/configs/resources/Drone_Noise_Test_Data/drone_noise_out/WaveUNet/-20dB/WaveUNet_DR4-FRNG0-SX365.n121.wav
+  type: paired_comparison
+  unforced: null
+- content: Thank you for attending
+  name: Thank you
+  questionnaire:
+  - label: Name
+    name: name
+    type: text
+  - label: Email
+    name: email
+    type: text
+  - label: Age
+    name: age
+    response:
+    - label: 0 to 20
+      value: 0-20
+    - label: 20 to 40
+      value: 20-40
+    - label: 40 to 60
+      value: 20-40
+    - label: 40 to 60
+      value: 40-60
+    type: likert
+  - label: Gender
+    name: gender
+    response:
+    - label: Female
+      value: female
+    - label: Male
+      value: male
+    - label: Other
+      value: other
+    type: likert
+  - label: Have you participated in audio subjective evailation before
+    name: subjective_eval_ever
+    response:
+    - label: 'Yes'
+      value: 'yes'
+    - label: 'No'
+      value: 'no'
+    type: likert
+  showResults: false
+  type: finish
+  writeResults: true
+remoteService: service/write.php
+showButtonPreviousPage: true
+stopOnErrors: true
+testId: ab_noloop
+testname: AB Test
