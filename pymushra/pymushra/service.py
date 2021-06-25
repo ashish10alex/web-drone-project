@@ -125,7 +125,7 @@ def home(url='index.html'):
 
 @app.route('/test')
 @app.route('/<path:url>')
-def test_page(url='index_test.html'):
+def test_page(url='index.html'):
     conf_file_path = 'static/yamls/test.yaml'
     return render_template(url, conf_file_path=conf_file_path)
 
