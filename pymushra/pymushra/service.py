@@ -25,6 +25,9 @@ except ImportError:
 app = Flask(__name__)
 os.makedirs('db', exist_ok=True)
 
+with open('sec_token.txt', 'rt') as f:
+    SECURITY_TOKEN = f.readline().strip()
+
 testpage_mutex = threading.Lock()
 
 csv_database = 'database_mixed.csv'
@@ -98,8 +101,18 @@ def get_user_ip():
 def only_admin_allowlist(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
-        print(get_user_ip(), file=sys.stderr)
         if get_user_ip() in app.config['admin_allowlist']:
+            return f(*args, **kwargs)
+        else:
+            return abort(403)
+    return wrapped
+
+def admin_or_token_allow(f):
+    @wraps(f)
+    def wrapped(*args, **kwargs):
+        if get_user_ip() in app.config['admin_allowlist']:
+            return f(*args, **kwargs)
+        elif request.args.get('token', None) == SECURITY_TOKEN:
             return f(*args, **kwargs)
         else:
             return abort(403)
@@ -140,14 +153,13 @@ def pagemap_op(func):
     return pagemap_new
 
 @app.route('/')
-@app.route('/<path:url>')
-def home(url='index.html'):
-    
+#@app.route('/<path:url>')
+@admin_or_token_allow
+def home():
     user_ip = get_user_ip()
     
     def select_page(pagemap):
         if user_ip in pagemap:
-            print('Pagemapped!', file=sys.stderr)
             return pagemap
         
         all_conf_files, all_seen_files = select_unique_yaml_files()
@@ -157,9 +169,7 @@ def home(url='index.html'):
         untaken_extra_pages = [p for p in untaken_pages if p not in disjoint_pages]
         random.shuffle(untaken_disjoint_pages)
         random.shuffle(untaken_extra_pages)
-        
-        print(untaken_disjoint_pages, file=sys.stderr)
-        print(untaken_extra_pages, file=sys.stderr)
+
         selected_page = (untaken_disjoint_pages + untaken_extra_pages)[0]
         pagemap[user_ip] = selected_page
         return pagemap
@@ -318,7 +328,7 @@ def collect(testid=''):
                 
             return jsonify({
                 'error': False,
-                'message': "Saved as ids %s" % ','.join(map(str, inserted_ids))
+                'message': "Response saved successfully"
             })
         except Exception as e:
             return jsonify({

@@ -1,8 +1,6 @@
 bufferSize: 2048
 pages:
-- content: <h1>Subjective evaluation practice page</h1><b>Welcome to AB testing framework. You will be presented a reference audio clip and processed
-    audio clip from two separate algorithms. You will be required to select one of
-    the two clips which sounds the closest to the reference audio clip. </b>
+- content: <h3>Subjective evaluation practice page</h3>You will be presented a reference audio clip which contains a spoken sentence in English and two processed audio clips A and B. You will be required to select one of the two clips which sounds the closest to the reference audio clip.</br></br>You will also be asked how confident you are in your choice with three options to answer: "low", "medium" and "high". You might use the guidance which follows to help you in choosing one of those three options. </br> <ul><li>Select "low" if you think that clips A and B sound very similar OR if you think that none of them sounds similar to the reference at all</li><li>Select "medium" if you think that your choice could be debated by another person</li><li>Select "high" if you think that the clip of your choice is undoubtedly closer to the reference than the other one</li></ul></br>This is the <b>practice</b> page. Its intention is to make you familiar with the application interface and give you the chance to set up your speakers/headphones properly. The answers you submit here would not be recorded.
   id: first_page
   name: Welcome
   type: generic
@@ -74,43 +72,6 @@ pages:
   unforced: null
 - content: 
   name: Thank you for going through the practice samples
-  questionnaire:
-  - label: Name
-    name: name
-    type: text
-  - label: Email
-    name: email
-    type: text
-  - label: Age
-    name: age
-    response:
-    - label: 0 to 20
-      value: 0-20
-    - label: 20 to 40
-      value: 20-40
-    - label: 40 to 60
-      value: 20-40
-    - label: 40 to 60
-      value: 40-60
-    type: likert
-  - label: Gender
-    name: gender
-    response:
-    - label: Female
-      value: female
-    - label: Male
-      value: male
-    - label: Other
-      value: other
-    type: likert
-  - label: Have you participated in audio subjective evailation before
-    name: subjective_eval_ever
-    response:
-    - label: 'Yes'
-      value: 'yes'
-    - label: 'No'
-      value: 'no'
-    type: likert
   showResults: false
   type: finish
   writeResults: true

@@ -57,8 +57,8 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
     }
     #final page which sends results
     final_page_template =  {'type': 'finish',
-       'name': 'Thank you',
-       'content': 'Thank you for attending',
+       'name': 'The test is finished',
+       'content': 'Thank you for attending.',
        'showResults': False,
        'writeResults': True,
        'questionnaire':[
@@ -120,7 +120,7 @@ def make_yaml_file(yaml_dir, combinations, idx_meta='0_20'):
         'type': 'generic',
         'id': 'first_page',
         'name': 'Welcome',
-        'content': '<h3>Welcome to the audio subjective evaluation app</h3><b>You will be presented a reference audio clip which contains a spoken sentence in English and two processed audio clips A and B. You will be required to select one of the two clips which sounds the closest to the reference audio clip.</b></br>You will also be asked how confident you are in your choice with three options to answer: "low", "medium" and "high". You might use the guidance which follows to help you in choosing one of those three options. </br> <ul><li>Select "low" if you think that clips A and B sound very similar OR if you think that none of them sounds similar to the reference at all;</li><li>Select "medium" if you think that your choice could be debated by another person;</li><li>Select "high" if you think that the clip of your choice is objectively closer to the reference than the other one.</li></ul>'
+        'content': '<h3>Welcome to the audio subjective evaluation app</h3>You will be presented a reference audio clip which contains a spoken sentence in English and two processed audio clips A and B. You will be required to select one of the two clips which sounds the closest to the reference audio clip.</br></br>You will also be asked how confident you are in your choice with three options to answer: "low", "medium" and "high". You might use the guidance which follows to help you in choosing one of those three options. </br> <ul><li>Select "low" if you think that clips A and B sound very similar OR if you think that none of them sounds similar to the reference at all</li><li>Select "medium" if you think that your choice could be debated by another person</li><li>Select "high" if you think that the clip of your choice is undoubtedly closer to the reference than the other one</li></ul></br>The test contains 40 pairs of audio clips to compare. It takes 20 to 40 minutes to complete. Please, <b>do not close or refresh the browser tab until all test pages are completed, otherwise your progress will be lost</b>.'
     }
     pages=[]
     pages.append(welcome_page_template)
