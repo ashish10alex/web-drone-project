@@ -190,10 +190,9 @@ def home(url='index.html'):
 #         return abort(403)
 
 @app.route('/test')
-@app.route('/<path:url>')
-def test_page(url='index.html'):
+def test_page():
     conf_file_path = 'static/yamls/test.yaml'
-    return render_template(url, conf_file_path=conf_file_path)
+    return render_template('index.html', conf_file_path=conf_file_path)
 
 
 @app.route('/finished')
