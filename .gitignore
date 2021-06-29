@@ -138,6 +138,7 @@ webmushra_
 
 # private stuff
 admin_ips.txt
+sec_token.txt
 
 # database
 *.csv

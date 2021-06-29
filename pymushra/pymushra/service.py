@@ -159,6 +159,14 @@ def home():
     user_ip = get_user_ip()
     
     def select_page(pagemap):
+        all_conf_files, all_seen_files = select_unique_yaml_files()
+        untaken_pages = [p for p in all_conf_files if p not in pagemap.values()]
+        
+        if user_ip in app.config['admin_allowlist']:
+            random_pages = [p for p in untaken_pages if p not in disjoint_pages]
+            pagemap[user_ip] = random.choice(random_pages)
+            return pagemap
+            
         if user_ip in pagemap:
             return pagemap
         
@@ -321,7 +329,7 @@ def collect(testid=''):
                 with transaction(collection):
                     inserted_ids = collection.insert_multiple(insert)
                     
-                pagemap.pop(user_ip)
+                #pagemap.pop(user_ip)
                 return pagemap
             
             pagemap_op(update_everything_and_pagemap)
